@@ -1,0 +1,15 @@
+@import "../layout/variables";
+
+.pageSelect {
+  display: block;
+  margin: auto;
+}
+
+.menuImage {
+  text-align: center;
+  margin-top: 16px;
+
+  img {
+    border: 12px solid $color3;
+  }
+}

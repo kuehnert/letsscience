@@ -1,0 +1,11 @@
+import React from "react";
+import Header from '../components/header';
+
+export default function Home() {
+  return <div>
+    <Header />
+    <h1>Let's Science Our Environment!</h1>
+    <p>Hello world!</p>
+    <img src="https://unsplash.com/photos/8Yw6tsB8tnc/download?force=true&w=960" />
+  </div>;
+}
