@@ -6,7 +6,6 @@ html {
   background-image: url("/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  // background-size: 100% auto;
 }
 
 body {
@@ -69,7 +68,7 @@ nav {
       transition: all 0.2s ease-out;
 
       &:hover {
-        background: #333;
+        color: lighten($colorNavLink, 50%);
       }
 
       &[aria-current="page"] {
@@ -117,7 +116,6 @@ nav {
       text-align: center;
       padding: 8px 8px;
       font-size: 1em;
-      // font-weight: bold;
       text-shadow: #000 8px 8px 12px;
       cursor: pointer;
       color: $color2;

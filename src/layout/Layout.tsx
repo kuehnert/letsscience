@@ -2,7 +2,6 @@ import classNames from "classnames"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
 import { Helmet } from "react-helmet"
-// import header from "./header2.jpg"
 import "./layout.scss"
 
 export default function Layout({ children }) {
@@ -41,7 +40,7 @@ export default function Layout({ children }) {
 
       <header>
         <Link to="/" id="brand" className="siteTitle">
-          Letʼs Science Our Environment!
+          Letʼs Science Our School Environment!
         </Link>
         <Link to="/" id="brand-mobile" className="siteTitle">
           Letʼs Science!
