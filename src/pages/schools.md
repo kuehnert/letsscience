@@ -3,7 +3,7 @@ title: 'Particitpating Schools'
 ---
 
 
-## Escola Secundária Afonso Lopes Vieira, Leiria, Portugal – []()
+## Escola Secundária Afonso Lopes Vieira, Leiria, Portugal – [Facebook](https://www.facebook.com/escola.secundaria.afonso.lopes.vieira/)
 
 * Berta Dinis
 * Maria João Ramadas
