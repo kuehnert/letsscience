@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { Helmet } from "react-helmet"
 import "./layout.scss"
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false)
 
   const data = useStaticQuery(
@@ -23,6 +23,7 @@ export default function Layout({ children }) {
       }
     `
   )
+
   const { title, menuLinks, description } = data.site.siteMetadata
 
   const NavLink = ({ label, to }: { label: string; to: string }) => {
@@ -31,11 +32,10 @@ export default function Layout({ children }) {
 
   return (
     <div className="application">
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: "en" }}>
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href="https://letsscience.eu/" />
-        <html lang="en" />
       </Helmet>
 
       <header>
@@ -69,3 +69,5 @@ export default function Layout({ children }) {
     </div>
   )
 }
+
+export default Layout;

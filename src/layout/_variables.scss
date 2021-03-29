@@ -5,5 +5,5 @@ $color4: rgba(191, 67, 66, 1);
 $color5: rgba(167, 138, 127, 1);
 $colorNavLink: $color2;
 $colorNavLinkActive: lighten($color2, 20%);
-$colorBgMain: rgba($color3, 10%);
+$colorBgMain: transparentize(white, 0.6);
 $colorBg: darken($color3, 5%);
