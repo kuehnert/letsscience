@@ -17,7 +17,6 @@
     "gatsby-plugin-sass": "^5.5.0",
     "gatsby-plugin-sharp": "^4.5.1",
     "gatsby-plugin-typography": "^4.5.0",
-    "gatsby-remark-bulma-v2": "^2.0.0",
     "gatsby-remark-images": "^6.5.1",
     "gatsby-source-filesystem": "^4.5.1",
     "gatsby-transformer-remark": "^5.5.1",
