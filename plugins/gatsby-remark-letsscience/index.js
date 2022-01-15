@@ -3,8 +3,8 @@ const visit = require("unist-util-visit-parents")
 module.exports = ({ markdownAST }, pluginOptions) => {
   visit(markdownAST, "heading", (node, ancestors) => {
     let { depth } = node
-    let mt = depth === 3 ? "mt-5" : "";
-    let mb = "";
+    let mt = depth === 3 ? "mt-5" : ""
+    let mb = ""
 
     const parent = ancestors[ancestors.length - 1]
     const nodeIndex = parent.children.indexOf(node)
@@ -13,18 +13,22 @@ module.exports = ({ markdownAST }, pluginOptions) => {
 
       if (sibling.type == "heading" && sibling.depth == "4") {
         sibling.data = {
-          hProperties: { class: `subtitle`}
+          hProperties: { class: `subtitle` },
         }
       }
 
-      if (sibling.type == "paragraph" && sibling.children.length == 1 && sibling.children[0].type == "emphasis") {
+      if (
+        sibling.type == "paragraph" &&
+        sibling.children.length == 1 &&
+        sibling.children[0].type == "emphasis"
+      ) {
         mb = "mb-0"
       }
     }
 
     if (node.data == undefined) {
       // Checks that the heading isn't a subtitle
-      node.data = { hProperties: { class: "title" }}
+      node.data = { hProperties: { class: "title" } }
     }
 
     node.data.hProperties.class += ` is-size-${depth + 1} ${mt} ${mb}`
@@ -59,7 +63,6 @@ module.exports = ({ markdownAST }, pluginOptions) => {
   })
 
   visit(markdownAST, "paragraph", (node, ancestors) => {
-
     const parent = ancestors[ancestors.length - 1]
 
     if (parent.type === "root") {

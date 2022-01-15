@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsby-letsscience",
   "private": false,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Gatsby website for letsscience.eu",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "bulma": "^0.9.3",
     "classnames": "^2.3.1",
@@ -45,9 +44,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/kuehnert/letsscience"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/kuehnert/letsscience/issues"
   }
 }
