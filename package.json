@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "bulma": "^0.9.3",
     "classnames": "^2.3.1",
     "gatsby": "^4.5.2",
     "gatsby-plugin-catch-links": "^4.5.0",
@@ -16,6 +17,7 @@
     "gatsby-plugin-sass": "^5.5.0",
     "gatsby-plugin-sharp": "^4.5.1",
     "gatsby-plugin-typography": "^4.5.0",
+    "gatsby-remark-bulma-v2": "^2.0.0",
     "gatsby-remark-images": "^6.5.1",
     "gatsby-source-filesystem": "^4.5.1",
     "gatsby-transformer-remark": "^5.5.1",

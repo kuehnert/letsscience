@@ -3,6 +3,7 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
 import { Helmet } from "react-helmet"
 import "./layout.scss"
+import "bulma/css/bulma.css"
 
 const Layout = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false)
@@ -27,47 +28,66 @@ const Layout = ({ children }) => {
   const { title, menuLinks, description } = data.site.siteMetadata
 
   const NavLink = ({ label, to }: { label: string; to: string }) => {
-    return <Link to={to}>{label}</Link>
+    return (
+      <Link className="navbar-item" to={to}>
+        {label}
+      </Link>
+    )
   }
 
   return (
-    <div className="application">
-      <Helmet htmlAttributes={{ lang: "en" }}>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href="https://letsscience.eu/" />
-      </Helmet>
+    <div className="container">
+      <div className="application m-6">
+        <Helmet htmlAttributes={{ lang: "en" }}>
+          <title>{title}</title>
+          <meta name="description" content={description} />
+          <link rel="canonical" href="https://letsscience.eu/" />
+        </Helmet>
 
-      <header>
-        <Link to="/" id="brand" className="siteTitle">
-          Letʼs Science Our School Environment!
-        </Link>
-        <Link to="/" id="brand-mobile" className="siteTitle">
-          Letʼs Science!
-        </Link>
-
-        <nav>
-          <div className={classNames("menu", { active: showMenu })}>
-            {menuLinks.map(l => (
-              <NavLink key={l.link} label={l.name} to={l.link} />
-            ))}
-          </div>
-
-          <div
-            id="hamburger"
-            className={classNames({ active: showMenu })}
-            onClick={() => setShowMenu(!showMenu)}
+        <header>
+          <nav
+            className="navbar"
+            role="navigation"
+            aria-label="main navigation"
           >
-            <div className="line" id="one"></div>
-            <div className="line" id="two"></div>
-            <div className="line" id="three"></div>
-          </div>
-        </nav>
-      </header>
+            <div className="navbar-brand">
+              <Link to="/" id="brand" className="navbar-item">
+                Letʼs Science!
+              </Link>
 
-      <div className="main">{children}</div>
+              <a
+                role="button"
+                onClick={() => setShowMenu(!showMenu)}
+                className="navbar-burger"
+                aria-label="menu"
+                aria-expanded="false"
+                data-target="navbarMenu"
+              >
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+
+            <div
+              id="navbarMenu"
+              className={classNames("navbar-menu", { "is-active": showMenu })}
+            >
+              <div className="navbar-start">
+                {menuLinks.map(l => (
+                  <NavLink key={l.link} label={l.name} to={l.link} />
+                ))}
+              </div>
+            </div>
+          </nav>
+        </header>
+
+        <div className="main box">
+          <div className="container">{children}</div>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default Layout;
+export default Layout

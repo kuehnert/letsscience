@@ -52,6 +52,7 @@ module.exports = {
               // wrapperStyle: "width: 30%; margin: 16px",
             },
           },
+          "gatsby-remark-bulma-v2"
           // "gatsby-remark-static-images",
         ],
       },
