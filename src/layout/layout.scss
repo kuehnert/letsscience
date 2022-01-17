@@ -8,3 +8,10 @@ img {
   margin-left: auto;
   margin-bottom: 2.5% !important;
 }
+
+html {
+  background-color: darken(rgba(200, 230, 255, 1), 5%);
+  background-image: url("/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
