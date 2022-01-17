@@ -2,6 +2,8 @@ import classNames from "classnames"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
 import { Helmet } from "react-helmet"
+import { MDXProvider } from "@mdx-js/react"
+import YouTube from "../components/YouTube"
 import "./layout.scss"
 import "bulma/css/bulma.css"
 
@@ -26,6 +28,8 @@ const Layout = ({ children }) => {
   )
 
   const { title, menuLinks, description } = data.site.siteMetadata
+
+  const components = { YouTube }
 
   const NavLink = ({ label, to }: { label: string; to: string }) => {
     return (
@@ -83,7 +87,9 @@ const Layout = ({ children }) => {
             </nav>
           </header>
 
-          <div className="container">{children}</div>
+          <div className="container">
+            <MDXProvider components={components}>{children}</MDXProvider>
+          </div>
         </div>
       </div>
     </div>
