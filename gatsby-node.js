@@ -28,13 +28,36 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  result.data.allMdx.edges.forEach(({ node }) => {
+  const blogPages = await graphql(`
+  {
+    allContentfulBlogpost {
+    edges {
+      node {
+        preview {
+          file {
+            url
+          }
+          title
+        }
+        contentful_id
+        id
+        author
+        date
+      }
+    }
+  }
+}
+  `)
+
+  blogPages.data.allContentfulBlogpost.edges.forEach(({ node }) => {
     createPage({
-      path: node.fields.slug,
+      path: "blog/" + node.preview.title,
       component: path.resolve("./src/templates/Page.tsx"),
       context: {
-        slug: node.fields.slug,
-      },
+        contentful_id: node.contentful_id
+      }
     })
-  })
+  }) 
+
+
 }
