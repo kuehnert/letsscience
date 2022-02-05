@@ -3,17 +3,17 @@ import Layout from "../layout/Layout"
 import { Link, graphql } from "gatsby"
 
 const BlogIndex = ({ data }) => {
-  const { edges: posts } = data.allMdx
+  const { edges: posts } = data.allContentfulBlogpost
 
   return (
     <Layout>
       {posts.map(({ node: post }) => {
         return (
           <div className="card mb-5">
-            {post.frontmatter.preview != null && (
+            {post.preview.file.url != null && (
               <div className="card-image">
-                <Link to={post.slug.replace("blog/", "")}>
-                  <img src={post.frontmatter.preview} />
+                <Link to={post.contentful_id}>
+                  <img src={post.preview.file.url} />
                 </Link>
               </div>
             )}
@@ -21,17 +21,17 @@ const BlogIndex = ({ data }) => {
             <div className="card-content">
               <div className="media">
                 <div className="media-content">
-                  <Link to={post.slug.replace("blog/", "")}>
-                    <p className="title is-4">{post.frontmatter.title}</p>
+                  <Link to={post.contentful_id}>
+                    <p className="title is-4">{post.title}</p>
                   </Link>
-                  <p className="subtitle is-6">{post.frontmatter.author}</p>
+                  <p className="subtitle is-6">{post.author}</p>
                 </div>
               </div>
 
               <div className="content">
-                {post.excerpt}
+                {post.content.childMdx.excerpt}
                 <br />
-                <time>{post.frontmatter.date}</time>
+                <time>{post.date}</time>
               </div>
             </div>
           </div>
@@ -42,23 +42,27 @@ const BlogIndex = ({ data }) => {
 }
 
 export const query = graphql`
-  query blogIndex {
-    allMdx(filter: { fields: { slug: { regex: "/blog/.*/" } } }) {
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            title
-            author
-            date
-            preview
+query blogIndex {
+  allContentfulBlogpost {
+    edges {
+      node {
+        author
+        contentful_id
+        date
+        content {
+          childMdx {
+            excerpt
           }
-          slug
+        }
+        preview {
+          file {
+            url
+          }
         }
       }
     }
   }
-`
+}`
+
 
 export default BlogIndex

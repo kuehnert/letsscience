@@ -1,27 +1,17 @@
 const path = require(`path`)
-const { createFilePath } = require("gatsby-source-filesystem")
+const { node } = require("prop-types")
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === "Mdx") {
-    const slug = createFilePath({ node, getNode, basePath: "pages" })
-    createNodeField({ node, name: "slug", value: slug })
-  }
-}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const result = await graphql(`
+  const pages = await graphql(`
     {
-      allMdx {
-        totalCount
+      allContentfulPage {
         edges {
           node {
-            fields {
-              slug
-            }
+            slug
+            contentful_id
           }
         }
       }
@@ -33,26 +23,27 @@ exports.createPages = async ({ graphql, actions }) => {
     allContentfulBlogpost {
     edges {
       node {
-        preview {
-          file {
-            url
-          }
-          title
-        }
         contentful_id
-        id
-        author
-        date
       }
     }
   }
 }
   `)
 
+  pages.data.allContentfulPage.edges.forEach(({ node }) => {
+    createPage({
+      path: node.slug,
+      component: path.resolve("./src/templates/Page.tsx"),
+      context: {
+        contentful_id: node.contentful_id
+      }
+    })
+  })
+
   blogPages.data.allContentfulBlogpost.edges.forEach(({ node }) => {
     createPage({
-      path: "blog/" + node.preview.title,
-      component: path.resolve("./src/templates/Page.tsx"),
+      path: "blog/" + node.contentful_id,
+      component: path.resolve("./src/templates/BlogEntry.tsx"),
       context: {
         contentful_id: node.contentful_id
       }

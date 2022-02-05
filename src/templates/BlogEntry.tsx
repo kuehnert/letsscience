@@ -8,12 +8,16 @@ interface Props {
 }
 
 const BlogPost: React.FC<Props> = ({ data }) => {
-  const post = data.allContentfulPage.edges[0].node
+  const post = data.allContentfulEntry.edges[0].node
   console.log(post)
 
   return (
     <Layout>
       <h1 className="title">{post.title}</h1>
+      <h2 className="subtitle is-6">
+        {post.author}
+        {post.date ? " - " + post.date : ""}
+      </h2>
 
       <MDXRenderer>{post.content.childMdx.body}</MDXRenderer>
     </Layout>
@@ -22,15 +26,21 @@ const BlogPost: React.FC<Props> = ({ data }) => {
 
 export const query = graphql`
   query ($contentful_id: String!) {
-    allContentfulPage(filter: { contentful_id: { eq: $contentful_id } }) {
+    allContentfulEntry(filter: { contentful_id: { eq: $contentful_id } }) {
       edges {
         node {
-          content {
-            childMdx {
-              body
+          ... on ContentfulBlogpost {
+            id
+            date
+            author
+            contentful_id
+            title
+            content {
+              childMdx {
+                body
+              }
             }
           }
-          title
         }
       }
     }

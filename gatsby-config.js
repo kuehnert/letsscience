@@ -21,13 +21,6 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "mdxPages",
-        path: `${__dirname}/src/mdxPages`,
-      },
-    },
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-typography",
