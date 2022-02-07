@@ -1,5 +1,5 @@
 ---
-title: 'The App'
+title: "The App"
 ---
 
 ![Our App](https://unsplash.com/photos/70ku6P7kgmc/download?force=true&w=640)

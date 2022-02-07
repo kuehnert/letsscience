@@ -21,7 +21,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "src",
-        path: `${__dirname}/src/`,
+        path: `${__dirname}/src/mdxPages`,
       },
     },
     "gatsby-plugin-sass",
@@ -34,9 +34,10 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-catch-links",
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: "gatsby-plugin-mdx",
       options: {
-        plugins: [
+        extensions: [".md", ".mdx"],
+        gatsbyRemarkPlugins: [
           {
             resolve: "gatsby-remark-images",
             options: {

@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../layout/Layout"
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 }
 
 const BlogPost: React.FC<Props> = ({ data }) => {
-  const post = data.markdownRemark
+  const post = data.mdx
 
   return (
     <Layout>
@@ -15,15 +16,15 @@ const BlogPost: React.FC<Props> = ({ data }) => {
         {post.frontmatter.title}
       </h1>
 
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <MDXRenderer>{post.body}</MDXRenderer>
     </Layout>
   )
 }
 
 export const query = graphql`
   query ($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title
       }
