@@ -10,18 +10,16 @@ const BlogIndex = ({ data }) => {
       {posts.map(({ node: post }) => {
         return (
           <div className="card mb-5">
-
             {post.frontmatter.preview != null && (
-                <div className="card-image">
-                  <Link to={post.slug.replace("blog/", "")}>
-                    <img src={post.frontmatter.preview} />
-                  </Link>
-                </div>
+              <div className="card-image">
+                <Link to={post.slug.replace("blog/", "")}>
+                  <img src={post.frontmatter.preview} />
+                </Link>
+              </div>
             )}
 
             <div className="card-content">
               <div className="media">
-
                 <div className="media-content">
                   <Link to={post.slug.replace("blog/", "")}>
                     <p className="title is-4">{post.frontmatter.title}</p>
