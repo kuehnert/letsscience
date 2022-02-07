@@ -52,9 +52,10 @@ module.exports = {
               // wrapperStyle: "width: 30%; margin: 16px",
             },
           },
+          "gatsby-remark-letsscience",
           // "gatsby-remark-static-images",
         ],
       },
     },
   ],
-};
+}
