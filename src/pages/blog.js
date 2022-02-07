@@ -1,19 +1,21 @@
 import React from "react"
 import Layout from "../layout/Layout"
 import { Link, graphql } from "gatsby"
+import Truncate from "react-truncate"
+import renderBulmaRichText from "../utils/renderRichText"
 
 const BlogIndex = ({ data }) => {
-  const { edges: posts } = data.allContentfulBlogpost
+  const { edges: posts } = data.allContentfulBlogPost
 
   return (
     <Layout>
       {posts.map(({ node: post }) => {
         return (
           <div className="card mb-5">
-            {post.preview.file.url != null && (
+            {post.previewImageURL != null && (
               <div className="card-image">
                 <Link to={post.contentful_id}>
-                  <img src={post.preview.file.url} />
+                  <img src={post.previewImageURL.file.url} />
                 </Link>
               </div>
             )}
@@ -24,14 +26,16 @@ const BlogIndex = ({ data }) => {
                   <Link to={post.contentful_id}>
                     <p className="title is-4">{post.title}</p>
                   </Link>
-                  <p className="subtitle is-6">{post.author}</p>
+                  <p className="subtitle is-6">{post.author} - {post.school}</p>
                 </div>
               </div>
 
               <div className="content">
-                {post.content.childMdx.excerpt}
+                <Truncate lines={1} ellipsis="&hellip;">
+                  {renderBulmaRichText(post.content)}
+                </Truncate>
                 <br />
-                <time>{post.date}</time>
+                <time>{post.publishedOn}</time>
               </div>
             </div>
           </div>
@@ -42,27 +46,27 @@ const BlogIndex = ({ data }) => {
 }
 
 export const query = graphql`
-query blogIndex {
-  allContentfulBlogpost {
-    edges {
-      node {
-        author
-        contentful_id
-        date
-        content {
-          childMdx {
-            excerpt
+  query blogIndex {
+    allContentfulBlogPost(sort: {fields: publishedOn, order: DESC}) {
+      edges {
+        node {
+          author
+          school
+          contentful_id
+          publishedOn
+          title
+          content {
+            raw
           }
-        }
-        preview {
-          file {
-            url
+          previewImageURL {
+            file {
+              url
+            }
           }
         }
       }
     }
   }
-}`
-
+`
 
 export default BlogIndex
