@@ -10,8 +10,6 @@ interface Props {
 
 const BlogPost: React.FC<Props> = ({ data }) => {
   const post = data.allContentfulBlogPost.edges[0].node
-  console.log(post)
-
   return (
     <Layout>
       <h1 className="title">{post.title}</h1>

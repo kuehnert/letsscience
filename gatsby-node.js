@@ -35,7 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve("./src/templates/Page.tsx"),
       context: {
         contentful_id: node.contentful_id,
-      }
+      },
     })
   })
 

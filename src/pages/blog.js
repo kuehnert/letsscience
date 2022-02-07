@@ -26,7 +26,9 @@ const BlogIndex = ({ data }) => {
                   <Link to={post.contentful_id}>
                     <p className="title is-4">{post.title}</p>
                   </Link>
-                  <p className="subtitle is-6">{post.author} - {post.school}</p>
+                  <p className="subtitle is-6">
+                    {post.author} - {post.school}
+                  </p>
                 </div>
               </div>
 
@@ -47,7 +49,7 @@ const BlogIndex = ({ data }) => {
 
 export const query = graphql`
   query blogIndex {
-    allContentfulBlogPost(sort: {fields: publishedOn, order: DESC}) {
+    allContentfulBlogPost(sort: { fields: publishedOn, order: DESC }) {
       edges {
         node {
           author
