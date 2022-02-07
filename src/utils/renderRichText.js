@@ -10,7 +10,7 @@ const renderBulmaRichText = document => {
         if (!gatsbyImageData) {
           return null
         }
-        return <div className="columns"><GatsbyImage className="column is-offset-one-quarter is-half" image={gatsbyImageData} /></div>
+        return <div className="columns"><GatsbyImage imgClassName="image" className="ml-auto mr-auto" image={gatsbyImageData} /></div>
       },
     },
   }
