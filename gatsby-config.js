@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "src",
+        name: "mdxPages",
         path: `${__dirname}/src/mdxPages`,
       },
     },
