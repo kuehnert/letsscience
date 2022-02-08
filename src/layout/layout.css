@@ -3,10 +3,11 @@ a {
 }
 
 img {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 2.5% !important;
+  margin-bottom: 2.5%;
+}
+
+a > img {
+  margin-bottom: auto;
 }
 
 html {

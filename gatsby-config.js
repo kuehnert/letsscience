@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     charSet: "utf-8",
@@ -17,45 +21,15 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "mdxPages",
-        path: `${__dirname}/src/mdxPages`,
-      },
-    },
-    "gatsby-plugin-sass",
-    {
-      resolve: "gatsby-plugin-typography",
-      options: {
-        pathToConfigModule: "src/utils/typography",
-      },
-    },
     "gatsby-plugin-sharp",
     "gatsby-plugin-catch-links",
+    // Fixes Contentful implementation: https://github.com/sanity-io/gatsby-source-sanity/issues/122#issuecomment-958748858
+    "gatsby-plugin-image",
     {
-      resolve: "gatsby-plugin-mdx",
+      resolve: "gatsby-source-contentful",
       options: {
-        extensions: [".md", ".mdx"],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 853,
-              withWebp: true,
-              linkImagesToOriginal: false,
-              backgroundColor: "none",
-              // wrapperStyle: fluidResult =>
-              //   `flex:${_.round(fluidResult.aspectRatio, 2)};`,
-              // wrapperStyle: "width: 30%; margin: 16px",
-            },
-          },
-          "gatsby-remark-letsscience",
-          // "gatsby-remark-static-images",
-        ],
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
   ],
