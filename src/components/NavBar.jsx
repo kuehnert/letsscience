@@ -67,7 +67,7 @@ const NavBar = () => {
                 <NavLink label={"Blog"} to={"/blog"} />
                 {data.allContentfulNavigation.edges[0].node.navigationBar
                 .map(({ slug, shortTitle }) => (
-                  <NavLink label={shortTitle} to={slug =="/" ? "/":"" + slug} />
+                  <NavLink label={shortTitle} to={slug =="/" ? "":"/" + slug} />
                 ))}
               </div>
             </div>
