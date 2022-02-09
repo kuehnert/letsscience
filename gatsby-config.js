@@ -9,15 +9,6 @@ module.exports = {
     description: "Erasmus+-Project sponsored by the E.U.",
     url: "https://letsscience.eu/",
     author: "Matthias Kühnert",
-    menuLinks: [
-      { name: "Our Project", link: "/" },
-      { name: "Blog", link: "/blog" },
-      { name: "The App", link: "/app" },
-      { name: "Materials", link: "/materials" },
-      { name: "Partners", link: "/partners" },
-      { name: "Schools", link: "/schools" },
-      { name: "Contact", link: "/contact" },
-    ],
   },
   plugins: [
     "gatsby-plugin-react-helmet",
