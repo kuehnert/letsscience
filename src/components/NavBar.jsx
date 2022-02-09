@@ -14,6 +14,18 @@ const NavBar = () => {
     )
   }
 
+  const addBlog = data => {
+    let navBar = data.allContentfulNavigation.edges[0].node.navigationBar
+
+    // Prevents React from adding Blog on every render
+    if (navBar.filter(x => x.slug == "blog").length < 1) {
+      navBar.splice(1, 0, { slug: "blog", shortTitle: "Blog"})
+    }
+    return navBar.map(({ slug, shortTitle }) => (
+                  <NavLink label={shortTitle} to={(slug =="/" ? "":"/") + slug} />
+                ))
+  }
+
   return (
     <StaticQuery
       query={graphql`
@@ -64,11 +76,7 @@ const NavBar = () => {
               className={classNames("navbar-menu", { "is-active": showMenu })}
             >
               <div className="navbar-start">
-                <NavLink label={"Blog"} to={"/blog"} />
-                {data.allContentfulNavigation.edges[0].node.navigationBar
-                .map(({ slug, shortTitle }) => (
-                  <NavLink label={shortTitle} to={(slug =="/" ? "":"/") + slug} />
-                ))}
+                {addBlog(data)}
               </div>
             </div>
           </nav>
