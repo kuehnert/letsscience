@@ -3,6 +3,7 @@ import Layout from "../layout/Layout"
 import { Link, graphql } from "gatsby"
 import Truncate from "react-truncate"
 import renderBulmaRichText from "../utils/renderRichText"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const BlogIndex = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost
@@ -15,7 +16,13 @@ const BlogIndex = ({ data }) => {
             {post.previewImageURL != null && (
               <div className="card-image">
                 <Link to={post.contentful_id}>
-                  <img src={post.previewImageURL.file.url} />
+                  <GatsbyImage
+                    imgClassName="image"
+                    image={
+                      post.previewImageURL.localFile.childImageSharp
+                        .gatsbyImageData
+                    }
+                  />
                 </Link>
               </div>
             )}
@@ -61,8 +68,10 @@ export const query = graphql`
             raw
           }
           previewImageURL {
-            file {
-              url
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
             }
           }
         }

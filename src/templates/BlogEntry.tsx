@@ -39,7 +39,11 @@ export const query = graphql`
               ... on ContentfulAsset {
                 contentful_id
                 __typename
-                gatsbyImageData
+                localFile {
+                  childrenImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
             }
           }
