@@ -45,6 +45,11 @@ export const query = graphql`
                   }
                 }
               }
+              ... on ContentfulEmbeddedVideo {
+                contentful_id
+                platform
+                url
+              }
             }
           }
         }
