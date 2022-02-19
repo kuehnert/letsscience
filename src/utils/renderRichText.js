@@ -11,15 +11,17 @@ const renderBulmaRichText = document => {
         const gatsbyImageData = retrieveImageData(node.data.target)
 
         if (gatsbyImageData) {
-          return <div className="columns">
-            <GatsbyImage
-              imgClassName="image"
-              // TODO: Implement an alt attribute
-              alt=""
-              className="ml-auto mr-auto"
-              image={gatsbyImageData}
-            />
-          </div>
+          return (
+            <div className="columns">
+              <GatsbyImage
+                imgClassName="image"
+                // TODO: Implement an alt attribute
+                alt=""
+                className="ml-auto mr-auto"
+                image={gatsbyImageData}
+              />
+            </div>
+          )
         }
 
         return null
@@ -30,7 +32,7 @@ const renderBulmaRichText = document => {
         if (url) {
           return <YouTube src={url} />
         }
-      }
+      },
     },
   }
 

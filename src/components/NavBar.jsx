@@ -18,11 +18,15 @@ const NavBar = () => {
     let navBar = data.allContentfulNavigation.edges[0].node.navigationBar
 
     // Prevents React from adding Blog on every render
-    if (navBar.filter(x => x.slug == "blog").length < 1) {
+    if (navBar.filter(x => x.slug === "blog").length < 1) {
       navBar.splice(1, 0, { slug: "blog", shortTitle: "Blog" })
     }
     return navBar.map(({ slug, shortTitle }, index) => (
-      <NavLink label={shortTitle} to={(slug == "/" ? "" : "/") + slug} key={index} />
+      <NavLink
+        label={shortTitle}
+        to={(slug === "/" ? "" : "/") + slug}
+        key={index}
+      />
     ))
   }
 

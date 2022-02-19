@@ -14,10 +14,11 @@ export const retrieveImageData = ({ localFile }) => {
 }
 
 // https://stackoverflow.com/a/8260383
-const getYouTubeId = (url) => {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length === 11)? match[7] : false;
+const getYouTubeId = url => {
+  var regExp =
+    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+  var match = url.match(regExp)
+  return match && match[7].length === 11 ? match[7] : false
 }
 
 export const retrieveUrl = ({ platform, url }) => {
@@ -26,6 +27,6 @@ export const retrieveUrl = ({ platform, url }) => {
   }
 
   const id = getYouTubeId(url)
-  
+
   return "https://www.youtube.com/embed/" + id
 }
