@@ -21,8 +21,8 @@ const NavBar = () => {
     if (navBar.filter(x => x.slug == "blog").length < 1) {
       navBar.splice(1, 0, { slug: "blog", shortTitle: "Blog" })
     }
-    return navBar.map(({ slug, shortTitle }) => (
-      <NavLink label={shortTitle} to={(slug == "/" ? "" : "/") + slug} />
+    return navBar.map(({ slug, shortTitle }, index) => (
+      <NavLink label={shortTitle} to={(slug == "/" ? "" : "/") + slug} key={index} />
     ))
   }
 

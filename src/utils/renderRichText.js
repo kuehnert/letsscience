@@ -15,6 +15,8 @@ const renderBulmaRichText = document => {
           <div className="columns">
             <GatsbyImage
               imgClassName="image"
+              // TODO: Implement an alt attribute
+              alt=""
               className="ml-auto mr-auto"
               image={gatsbyImageData}
             />
