@@ -22,6 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allContentfulBlogPost {
         edges {
           node {
+            slug
             contentful_id
           }
         }
@@ -40,12 +41,14 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   blogPages.data.allContentfulBlogPost.edges.forEach(({ node }) => {
+    ["blog/" + node.slug, "blog/" + node.contentful_id].forEach((slug) => {
     createPage({
-      path: "blog/" + node.contentful_id,
+      path: slug,
       component: path.resolve("./src/templates/BlogEntry.tsx"),
       context: {
         contentful_id: node.contentful_id,
       },
+    })
     })
   })
 }

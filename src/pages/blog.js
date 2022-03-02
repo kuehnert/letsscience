@@ -15,7 +15,7 @@ const BlogIndex = ({ data }) => {
           <div className="card mb-5">
             {post.previewImageURL != null && (
               <div className="card-image">
-                <Link to={post.contentful_id}>
+                <Link to={post.slug}>
                   <GatsbyImage
                     imgClassName="image"
                     image={
@@ -30,7 +30,7 @@ const BlogIndex = ({ data }) => {
             <div className="card-content">
               <div className="media">
                 <div className="media-content">
-                  <Link to={post.contentful_id}>
+                  <Link to={post.slug}>
                     <p className="title is-4">{post.title}</p>
                   </Link>
                   <p className="subtitle is-6">
@@ -64,6 +64,7 @@ export const query = graphql`
           contentful_id
           publishedOn
           title
+          slug
           content {
             raw
           }
