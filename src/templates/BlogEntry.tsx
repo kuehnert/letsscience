@@ -53,6 +53,18 @@ export const query = graphql`
                 contentful_id
                 platform
                 url
+                internal {
+                  type
+                }
+              }
+              ... on ContentfulImageCarousel {
+                contentful_id
+                images {
+                  gatsbyImageData
+                }
+                internal {
+                  type
+                }
               }
             }
           }
