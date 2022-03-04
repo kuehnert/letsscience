@@ -57,7 +57,7 @@ const NavBar = () => {
             aria-label="main navigation"
           >
             <div className="navbar-brand">
-              <Link to="/" id="brand" className="navbar-item">
+              <Link to="/" id="brand" className="navbar-item pl-0">
                 Letʼs Science!
               </Link>
 
