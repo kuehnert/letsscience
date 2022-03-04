@@ -1,7 +1,6 @@
 import classNames from "classnames"
 import { graphql, StaticQuery, Link } from "gatsby"
 import React, { useState } from "react"
-import Helmet from "react-helmet"
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -48,9 +47,6 @@ const NavBar = () => {
       `}
       render={data => (
         <header className="mt-0">
-          <Helmet htmlAttributes={{ lang: "en" }}>
-            <link rel="canonical" href="https://letsscience.eu/" />
-          </Helmet>
           <nav
             className="navbar"
             role="navigation"

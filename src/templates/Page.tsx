@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../layout/Layout"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import renderBulmaRichText from "../utils/renderRichText"
+import Helmet from "react-helmet"
 
 interface Props {
   data: any
@@ -13,6 +14,9 @@ const BlogPost: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet htmlAttributes={{ lang: "en" }}>
+        <title>{post.title}</title>
+      </Helmet>
       <h1 className="title">{post.title}</h1>
 
       {renderBulmaRichText(post.content)}
