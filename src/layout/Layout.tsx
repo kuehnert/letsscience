@@ -2,22 +2,23 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
 import "./layout.css"
 import "bulma/css/bulma.css"
+import "bulma-carousel/dist/css/bulma-carousel.min.css"
 import NavBar from "../components/NavBar"
 import { Helmet } from "react-helmet"
 
 const Layout = ({ children }) => {
   return (
-      <div className="container">
+    <div className="container">
       <Helmet>
         <link rel="canonical" href="https://letsscience.eu/" />
       </Helmet>
-        <div className="application m-6">
-          <div className="main box">
-            <NavBar />
-            <div className="container content">{children}</div>
-          </div>
+      <div className="application m-6">
+        <div className="main box">
+          <NavBar />
+          <div className="container content">{children}</div>
         </div>
       </div>
+    </div>
   )
 }
 

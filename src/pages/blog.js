@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Truncate from "react-truncate"
 import renderBulmaRichText from "../utils/renderRichText"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet"
 
 const BlogIndex = ({ data }) => {
   const { edges: posts } = data.allContentfulBlogPost

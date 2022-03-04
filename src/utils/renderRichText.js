@@ -3,6 +3,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { retrieveImageData, retrieveUrl } from "./queryUtils"
 import React from "react"
 import YouTube from "../components/YouTube"
+import Carousel from "../components/Carousel"
 
 const renderBulmaRichText = document => {
   const options = {
@@ -27,10 +28,18 @@ const renderBulmaRichText = document => {
         return null
       },
       "embedded-entry-block": node => {
-        const url = retrieveUrl(node.data.target)
+        const target = node.data.target
 
-        if (url) {
-          return <YouTube src={url} />
+        if (!target.internal) {
+          return
+        }
+
+        switch (target.internal.type) {
+          case "ContentfulEmbeddedVideo":
+            const url = retrieveUrl(target)
+            return <YouTube src={url} />
+          case "ContentfulImageCarousel":
+            return <Carousel images={target.images} />
         }
       },
     },
