@@ -1,27 +1,27 @@
 import React, { useEffect } from "react"
-import bulmaCarousel from "bulma-carousel/dist/js/bulma-carousel.min.js"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { Splide, SplideSlide } from "@splidejs/react-splide"
+import "@splidejs/splide/dist/css/splide.min.css"
 
 const Carousel = ({ images }) => {
-  useEffect(() => {
-    bulmaCarousel.attach(".carousel", {
-      slidesToScroll: 1,
-      slidesToShow: 2,
-    })
-  }, bulmaCarousel)
-
   return (
-    <section className="section" style={{ overflow: "hidden" }}>
-      <div className="container">
-        <div className="carousel">
-          {images.map(({ gatsbyImageData }, index) => (
-            <div key={index}>
-              <GatsbyImage imgClassName="image" image={gatsbyImageData} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <Splide
+      options={{
+        perMove: 1,
+        perPage: 2,
+        breakpoints: {
+          480: {
+            perPage: 1,
+          },
+        },
+      }}
+    >
+      {images.map(({ gatsbyImageData }, index) => (
+        <SplideSlide key={index}>
+          <GatsbyImage imgClassName="image" image={gatsbyImageData} />
+        </SplideSlide>
+      ))}
+    </Splide>
   )
 }
 
