@@ -6,6 +6,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.11.1",
     "@contentful/rich-text-types": "^15.11.1",
+    "@loadable/component": "^5.15.2",
     "@splidejs/react-splide": "^0.6.20",
     "@types/react-helmet": "^6.1.5",
     "bulma": "^0.9.3",
@@ -14,6 +15,7 @@
     "gatsby-plugin-catch-links": "^4.5.0",
     "gatsby-plugin-gatsby-cloud": "^4.5.1",
     "gatsby-plugin-image": "^2.6.0",
+    "gatsby-plugin-loadable-components-ssr": "^4.2.0",
     "gatsby-plugin-manifest": "^4.5.1",
     "gatsby-plugin-offline": "^5.5.1",
     "gatsby-plugin-preact": "^6.9.0",
