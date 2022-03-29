@@ -1,19 +1,29 @@
-import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../layout/Layout"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import renderBulmaRichText from "../utils/renderRichText"
+import React from "react"
 import Helmet from "react-helmet"
+import EntryLink from "../components/EntryLink"
+import EntryTiles from "../components/EntryTiles"
+import Layout from "../layout/Layout"
+import renderBulmaRichText from "../utils/renderRichText"
 
 interface Props {
   data: any
 }
 
-const BlogPost: React.FC<Props> = ({ data }) => {
+const Page: React.FC<Props> = ({ data }) => {
   const post = data.allContentfulWebPage.edges[0].node
 
   return (
     <Layout>
+      {post.slug === "/" && (
+        <>
+          <h1 className="title">Latest Blog Articles</h1>
+          <div className="columns">
+            <EntryTiles edges={data.allContentfulBlogPost.edges} />
+          </div>
+        </>
+      )}
+
       <Helmet htmlAttributes={{ lang: "en" }}>
         <title>{post.title}</title>
       </Helmet>
@@ -44,10 +54,17 @@ export const query = graphql`
             }
           }
           title
+          slug
         }
       }
+    }
+    allContentfulBlogPost(
+      limit: 3
+      sort: { fields: publishedOn, order: DESC }
+    ) {
+      ...postFragment
     }
   }
 `
 
-export default BlogPost
+export default Page
