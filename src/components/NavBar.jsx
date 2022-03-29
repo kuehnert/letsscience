@@ -46,7 +46,7 @@ const NavBar = () => {
         }
       `}
       render={data => (
-        <header className="mt-0">
+        <header className="mt-0 mb-2">
           <nav
             className="navbar"
             role="navigation"

@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       <Helmet>
         <link rel="canonical" href="https://letsscience.eu/" />
       </Helmet>
-      <div className="application m-6">
+      <div className="application responsive-margin">
         <div className="main box">
           <NavBar />
           <div className="container content">{children}</div>

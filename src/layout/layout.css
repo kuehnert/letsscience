@@ -10,6 +10,16 @@ a > img {
   margin-bottom: auto;
 }
 
+.responsive-margin {
+  margin: 3rem;
+}
+
+@media (max-width: 786px) {
+  .responsive-margin {
+    margin: 0rem;
+  }
+}
+
 html {
   background-color: darken(rgba(200, 230, 255, 1), 5%);
   background-image: url("/bg.webp");
