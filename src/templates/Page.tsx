@@ -17,7 +17,7 @@ const Page: React.FC<Props> = ({ data }) => {
     <Layout>
       {post.slug === "/" && (
         <>
-          <h1 className="title">Latest Blog Articles</h1>
+          <h2>Latest Blog Articles</h2>
           <div className="columns">
             <EntryTiles edges={data.allContentfulBlogPost.edges} />
           </div>
@@ -27,7 +27,7 @@ const Page: React.FC<Props> = ({ data }) => {
       <Helmet htmlAttributes={{ lang: "en" }}>
         <title>{post.title}</title>
       </Helmet>
-      <h1 className="title">{post.title}</h1>
+      {post.slug !== "/" && <h1 className="title">{post.title}</h1>}
 
       {renderBulmaRichText(post.content)}
     </Layout>
