@@ -1,3 +1,4 @@
+import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
@@ -33,9 +34,7 @@ const EntryLink = ({ post }) => {
         </div>
 
         <div className="content">
-          <TextTruncate line={3}>
-            {renderBulmaRichText(post.content)}
-          </TextTruncate>
+          <TextTruncate line={3} text={documentToPlainTextString(JSON.parse(post.content.raw))} />
           <br />
           <time>{post.publishedOn}</time>
         </div>
