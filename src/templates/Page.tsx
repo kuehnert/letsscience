@@ -5,6 +5,7 @@ import EntryLink from "../components/EntryLink"
 import EntryTiles from "../components/EntryTiles"
 import Layout from "../layout/Layout"
 import renderBulmaRichText from "../utils/renderRichText"
+import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
 
 interface Props {
   data: any

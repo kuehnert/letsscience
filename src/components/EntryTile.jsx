@@ -1,8 +1,8 @@
+import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
 import { navigate } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-import Truncate from "react-truncate"
-import renderBulmaRichText from "../utils/renderRichText"
+import TextTruncate from "react-text-truncate"
 
 const EntryTile = ({ classNames, node, truncateLines, showPreviewImage }) => {
   return (
@@ -20,9 +20,10 @@ const EntryTile = ({ classNames, node, truncateLines, showPreviewImage }) => {
       )}
       {!showPreviewImage && (
         <p className="subtitle is-6">
-          <Truncate lines={truncateLines || 3}>
-            {renderBulmaRichText(node.content)}
-          </Truncate>
+          <TextTruncate
+            line={truncateLines || 3}
+            text={documentToPlainTextString(JSON.parse(node.content.raw))}
+          />
         </p>
       )}
     </article>

@@ -4,11 +4,13 @@
   "description": "Gatsby website for letsscience.eu",
   "version": "0.1.0",
   "dependencies": {
+    "@contentful/rich-text-plain-text-renderer": "^15.12.0",
     "@contentful/rich-text-react-renderer": "^15.11.1",
     "@contentful/rich-text-types": "^15.11.1",
     "@loadable/component": "^5.15.2",
     "@splidejs/react-splide": "^0.6.20",
     "@types/react-helmet": "^6.1.5",
+    "@types/react-text-truncate": "^0.14.1",
     "bulma": "^0.9.3",
     "classnames": "^2.3.1",
     "gatsby": "^4.9.2",
@@ -32,7 +34,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-image-gallery": "^1.2.7",
-    "react-truncate": "^2.4.0",
+    "react-text-truncate": "^0.18.0",
     "typography-theme-parnassus": "^0.16.19"
   },
   "devDependencies": {

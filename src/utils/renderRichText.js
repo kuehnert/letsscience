@@ -1,10 +1,10 @@
-import loadable from "@loadable/component";
+import loadable from "@loadable/component"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { retrieveImageData, retrieveUrl } from "./queryUtils"
 import React from "react"
 import YouTube from "../components/YouTube"
-const Carousel = loadable(() => import("../components/Carousel"));
+const Carousel = loadable(() => import("../components/Carousel"))
 
 const renderBulmaRichText = document => {
   const options = {

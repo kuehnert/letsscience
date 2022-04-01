@@ -1,7 +1,7 @@
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-import Truncate from "react-truncate"
+import TextTruncate from "react-text-truncate"
 import renderBulmaRichText from "../utils/renderRichText"
 
 const EntryLink = ({ post }) => {
@@ -33,9 +33,9 @@ const EntryLink = ({ post }) => {
         </div>
 
         <div className="content">
-          <Truncate lines={3} ellipsis="&hellip;">
+          <TextTruncate line={3}>
             {renderBulmaRichText(post.content)}
-          </Truncate>
+          </TextTruncate>
           <br />
           <time>{post.publishedOn}</time>
         </div>
