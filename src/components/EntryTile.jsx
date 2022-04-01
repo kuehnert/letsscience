@@ -22,7 +22,7 @@ const EntryTile = ({ classNames, node, truncateLines, showPreviewImage }) => {
         <p className="subtitle is-6">
           <TextTruncate
             line={truncateLines || 3}
-            text={documentToPlainTextString(JSON.parse(node.content.raw))}
+            text={node.fields.plain}
           />
         </p>
       )}

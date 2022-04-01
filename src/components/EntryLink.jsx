@@ -34,7 +34,7 @@ const EntryLink = ({ post }) => {
         </div>
 
         <div className="content">
-          <TextTruncate line={3} text={documentToPlainTextString(JSON.parse(post.content.raw))} />
+          <TextTruncate line={3} text={post.fields.plain} />
           <br />
           <time>{post.publishedOn}</time>
         </div>
@@ -57,6 +57,9 @@ export const entryFragment = graphql`
         slug
         content {
           raw
+        }
+        fields {
+          plain
         }
         previewImageURL {
           localFile {
