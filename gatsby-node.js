@@ -1,4 +1,6 @@
-const { documentToPlainTextString } = require("@contentful/rich-text-plain-text-renderer");
+const {
+  documentToPlainTextString,
+} = require("@contentful/rich-text-plain-text-renderer")
 const path = require(`path`)
 const { node } = require("prop-types")
 
@@ -6,9 +8,8 @@ exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === "ContentfulBlogPost") {
-    console.log("HHHHHhh")
-    const text = documentToPlainTextString(JSON.parse(node.content.raw));
-    createNodeField({ node, name: 'plain', value: text})
+    const text = documentToPlainTextString(JSON.parse(node.content.raw))
+    createNodeField({ node, name: "plain", value: text })
   }
 }
 

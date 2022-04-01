@@ -20,10 +20,7 @@ const EntryTile = ({ classNames, node, truncateLines, showPreviewImage }) => {
       )}
       {!showPreviewImage && (
         <p className="subtitle is-6">
-          <TextTruncate
-            line={truncateLines || 3}
-            text={node.fields.plain}
-          />
+          <TextTruncate line={truncateLines || 3} text={node.fields.plain} />
         </p>
       )}
     </article>
