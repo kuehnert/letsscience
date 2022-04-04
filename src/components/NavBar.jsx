@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import { graphql, StaticQuery, Link } from "gatsby"
 import React, { useState } from "react"
+import logo from "../../static/logo.png"
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -53,9 +54,9 @@ const NavBar = () => {
             aria-label="main navigation"
           >
             <div className="navbar-brand">
-              <Link to="/" id="brand" className="navbar-item pl-0">
-                Letʼs Science!
-              </Link>
+              <a className="navbar-item">
+              <img src={logo} to="/" id="brand" className="navbar-item pl-0" />
+              </a>
 
               <a
                 role="button"
