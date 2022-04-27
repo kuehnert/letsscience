@@ -21,7 +21,10 @@ const BlogIndex = ({ data }) => {
 
 export const query = graphql`
   query blogIndex {
-    allContentfulBlogPost(sort: { fields: publishedOn, order: DESC }) {
+    allContentfulBlogPost(
+      filter: { node_locale: { eq: "en-GB" } }
+      sort: { fields: publishedOn, order: DESC }
+    ) {
       ...postFragment
     }
   }
