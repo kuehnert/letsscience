@@ -7,7 +7,7 @@ const { node } = require("prop-types")
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === "ContentfulBlogPost") {
+  if (node.internal.type === "ContentfulBlogPost" && node.content != null) {
     const text = documentToPlainTextString(JSON.parse(node.content.raw))
     createNodeField({ node, name: "plain", value: text })
   }
