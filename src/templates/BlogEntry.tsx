@@ -17,6 +17,7 @@ const BlogPost: React.FC<Props> = ({ data }) => {
   const [post, setPost] = useState(engPost.node)
 
   const setLocale = locale => {
+    console.log(locale)
     setPost(posts.filter(({ node }) => node.node_locale == locale)[0].node)
     localStorage.setItem("letsscience_locale", locale)
   }
@@ -40,13 +41,11 @@ const BlogPost: React.FC<Props> = ({ data }) => {
   }
 
   useEffect(() => {
-    let letsccience_locale = localStorage.getItem("letsccience_locale") != null
+    let letsccience_locale = localStorage.getItem("letsscience_locale")
     if (letsccience_locale != null && isAvailable(letsccience_locale)) {
       setLocale(letsccience_locale)
     }
   }, [])
-
-  console.log(listLocales())
 
   return (
     <Layout>
