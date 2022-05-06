@@ -61,6 +61,7 @@ export const query = graphql`
     }
     allContentfulBlogPost(
       limit: 3
+      filter: { node_locale: { eq: "en-GB" } }
       sort: { fields: publishedOn, order: DESC }
     ) {
       ...postFragment
