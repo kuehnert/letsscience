@@ -1,16 +1,14 @@
-import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
-import { navigate } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import TextTruncate from "react-text-truncate"
 
 const EntryTile = ({ classNames, node, truncateLines, showPreviewImage }) => {
   return (
-    <article
+    <a
       className={`tile ${classNames}`}
-      onClick={() => navigate(`/blog/${node.slug}`)}
+      href={`/blog/${node.slug}`}
     >
-      <p className="title is-5">{node.title}</p>
+      <p className="title is-5" >{node.title}</p>
       {showPreviewImage && (
         <GatsbyImage
           imgClassName="image"
@@ -23,7 +21,7 @@ const EntryTile = ({ classNames, node, truncateLines, showPreviewImage }) => {
           <TextTruncate line={truncateLines || 3} text={node.fields.plain} />
         </p>
       )}
-    </article>
+    </a>
   )
 }
 

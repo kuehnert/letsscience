@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 import "@splidejs/splide/dist/css/splide.min.css"

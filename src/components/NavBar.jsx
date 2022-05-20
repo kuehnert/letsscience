@@ -57,8 +57,7 @@ const NavBar = () => {
                 Letʼs Science!
               </Link>
 
-              <a
-                role="button"
+              <button
                 onClick={() => setShowMenu(!showMenu)}
                 className="navbar-burger"
                 aria-label="menu"
@@ -68,7 +67,7 @@ const NavBar = () => {
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
-              </a>
+              </button>
             </div>
 
             <div

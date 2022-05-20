@@ -1,9 +1,7 @@
-import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import TextTruncate from "react-text-truncate"
-import renderBulmaRichText from "../utils/renderRichText"
 
 const EntryLink = ({ post }) => {
   return (

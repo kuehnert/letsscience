@@ -4,6 +4,7 @@ const YouTube = ({ src }) => {
   return (
     <div className="youtube-video-container">
       <iframe
+        title={`YouTube video container: ${src}`}
         width="560"
         height="315"
         src={src}

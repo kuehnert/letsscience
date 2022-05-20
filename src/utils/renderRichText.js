@@ -41,6 +41,8 @@ const renderBulmaRichText = document => {
             return <YouTube src={url} />
           case "ContentfulImageCarousel":
             return <Carousel images={target.images} />
+          default:
+            console.log(`Unexpected internal type: ${target.internal.type}`)
         }
       },
     },
