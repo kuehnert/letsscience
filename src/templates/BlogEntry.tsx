@@ -24,7 +24,7 @@ const BlogPost: React.FC<Props> = ({ data }) => {
 
   const isAvailable = locale => {
     let res = posts.filter(({ node }) => node.node_locale == locale)
-    if (res.length > 0 && res[0].node.title != post.title) {
+    if (res.length > 0 && res[0].node.title != engPost.title) {
       return true
     }
     return false
