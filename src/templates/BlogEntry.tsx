@@ -17,17 +17,21 @@ const BlogPost: React.FC<Props> = ({ data }) => {
   const [post, setPost] = useState(engPost.node)
 
   const setLocale = locale => {
-    console.log(locale)
     setPost(posts.filter(({ node }) => node.node_locale == locale)[0].node)
     localStorage.setItem("letsscience_locale", locale)
   }
 
   const isAvailable = locale => {
-    let res = posts.filter(({ node }) => node.node_locale == locale)
-    if (res.length > 0 && res[0].node.title != engPost.title) {
-      return true
+    let res = posts.filter(({ node }) => node.node_locale == locale && node.node_locale != post.node_locale)
+    if (res.length == 0) {
+      return false;
     }
-    return false
+    res = res[0].node
+    if (locale != "en-GB" && res.title == engPost.node.title) {
+      return false;
+    }
+
+    return true
   }
 
   const listLocales = () => {
