@@ -26,7 +26,8 @@ const EntryLink = ({ post }) => {
               <p className="title is-4">{post.title}</p>
             </Link>
             <p className="subtitle is-6">
-              {post.author ? post.author + " - " : ""}{post.school}
+              {post.author ? post.author + " - " : ""}
+              {post.school}
             </p>
           </div>
         </div>

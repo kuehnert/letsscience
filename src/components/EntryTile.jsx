@@ -4,11 +4,8 @@ import TextTruncate from "react-text-truncate"
 
 const EntryTile = ({ classNames, node, truncateLines, showPreviewImage }) => {
   return (
-    <a
-      className={`tile ${classNames}`}
-      href={`/blog/${node.slug}`}
-    >
-      <p className="title is-5" >{node.title}</p>
+    <a className={`tile ${classNames}`} href={`/blog/${node.slug}`}>
+      <p className="title is-5">{node.title}</p>
       {showPreviewImage && (
         <GatsbyImage
           imgClassName="image"
