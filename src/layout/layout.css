@@ -21,7 +21,7 @@ a > img {
 }
 
 html {
-  background-color: darken(rgba(200, 230, 255, 1), 5%);
+  background-color: darken(rgba(201, 230, 255, 1), 5%);
   background-image: url("/bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
