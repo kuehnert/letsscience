@@ -20,6 +20,23 @@ a > img {
   }
 }
 
+.card-content{
+  font-size: 1.4em;
+}
+
+@media screen and (max-width:800px) {
+  .card-content {
+    font-size: 1.25em;
+  }
+}
+
+@media screen and (max-width:600px){
+  .card-content {
+    font-size: 1em;
+  }
+}
+
+
 html {
   background-color: darken(rgba(201, 230, 255, 1), 5%);
   background-image: url("/bg.webp");
