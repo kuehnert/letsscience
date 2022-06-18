@@ -42,6 +42,19 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  const reviews = await graphql(`
+    {
+      allContentfulReview {
+        edges {
+          node {
+            slug
+            contentful_id
+          }
+        }
+      }
+    }
+  `)
+
   webPages.data.allContentfulWebPage.edges.forEach(({ node }) => {
     createPage({
       path: node.slug,
@@ -53,10 +66,22 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   blogPages.data.allContentfulBlogPost.edges.forEach(({ node }) => {
-    ;["blog/" + node.slug, "blog/" + node.contentful_id].forEach(slug => {
+    ;[node.slug, node.contentful_id].forEach(slug => {
       createPage({
-        path: slug,
+        path: "blog/" + slug,
         component: path.resolve("./src/templates/BlogEntry.tsx"),
+        context: {
+          contentful_id: node.contentful_id,
+        },
+      })
+    })
+  })
+
+  reviews.data.allContentfulReview.edges.forEach(({ node }) => {
+    ;[node.slug, node.contentful_id].forEach(slug => {
+      createPage({
+        path: "review/" + slug,
+        component: path.resolve("./src/templates/Review.tsx"),
         context: {
           contentful_id: node.contentful_id,
         },
