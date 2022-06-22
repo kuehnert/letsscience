@@ -5,9 +5,9 @@ import TextTruncate from "react-text-truncate"
 
 const EntryLink = ({ post }) => {
   return (
-    <div className="card mb-5">
+    <div className="card mb-5 columns">
       {post.previewImageURL != null && (
-        <div className="card-image">
+        <div className="card-image column">
           <Link to={"/blog/" + post.slug}>
             <GatsbyImage
               imgClassName="image"
@@ -19,7 +19,7 @@ const EntryLink = ({ post }) => {
         </div>
       )}
 
-      <div className="card-content">
+      <div className="card-content column">
         <div className="media">
           <div className="media-content">
             <Link to={post.slug}>
