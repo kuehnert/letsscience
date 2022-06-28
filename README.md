@@ -17,6 +17,6 @@ Environmental issues, above all the topic of climate change, have an increasingl
 
 ## 🚀 Quick start
 
-0. Create a `.env.devlopment` file and add the `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` environment variable
+0. Create a `.env.development` file and add the `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` environment variable
 1. Run `npm install` and `npm run start`
-2. Go to [http://localhost:8080](http://localhost:8080)
+2. Go to [http://localhost:8000](http://localhost:8000)
