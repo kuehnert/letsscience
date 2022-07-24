@@ -3,7 +3,6 @@ import "./layout.css"
 import "bulma/css/bulma.css"
 import NavBar from "../components/NavBar"
 import { Helmet } from "react-helmet"
-import Footer from "../components/Footer"
 
 const Layout = ({ children }) => {
   return (
@@ -16,7 +15,6 @@ const Layout = ({ children }) => {
           <NavBar />
           <div className="container content">
             {children}
-            <Footer />
           </div>
         </div>
       </div>

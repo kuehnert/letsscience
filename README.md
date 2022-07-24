@@ -7,12 +7,6 @@
   Let's Science our Environment
 </h1>
 
-<div align="center">
-
-[![Powered By Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg "Powered By Vercel")](https://vercel.com/?utm_source=erasmus_opladen&utm_campaign=oss "Powered By Vercel")
-
-</div>
-
 Environmental issues, above all the topic of climate change, have an increasingly great impact on political and social development and decisions. Students are more and more affected by them, also in their everyday life. We believe that for the younger generation, a cooperation on an international level is the best chance to secure a sustainable livelihood. That is why we regard it as indispensable to teach students skills and competences which enable them to understand analyse and possibly contribute to a solution of these problems also on an international scale. This includes providing them with solid knowledge about the topic, choosing a scientific approach to deal with ecological questions, reflecting with students the consequences and scope of the individual acting and enabling them to thoroughly take part in an international discourse.
 
 ## 🚀 Quick start
