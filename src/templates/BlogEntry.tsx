@@ -56,9 +56,6 @@ const BlogPost: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>{post.title}</title>
-      </Helmet>
       <h1 className="title">{post.title}</h1>
       <h2 className="subtitle is-6">
         {post.author}

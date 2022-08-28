@@ -1,26 +1,23 @@
 import React from "react"
 import "./layout.css"
-import "bulma/css/bulma.css"
 import NavBar from "../components/NavBar"
-import { Helmet } from "react-helmet"
-import Footer from "../components/Footer"
+import { Container, TypographyStylesProvider } from "@mantine/core"
+
+const links = [
+  { link: "/blog", label: "Blog" },
+  { link: "/app", label: "The App" },
+  { link: "/materials", label: "Materials" },
+  { link: "/partners", label: "Partners" },
+  { link: "/schools", label: "Schools" },
+  { link: "/contact", label: "Contact" },
+]
 
 const Layout = ({ children }) => {
   return (
-    <div className="container">
-      <Helmet>
-        <link rel="canonical" href="https://letsscience.eu/" />
-      </Helmet>
-      <div className="application responsive-margin">
-        <div className="main box">
-          <NavBar />
-          <div className="container content">
-            {children}
-            <Footer />
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <NavBar links={links} />
+      <Container>{children}</Container>
+    </>
   )
 }
 

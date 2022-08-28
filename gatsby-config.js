@@ -18,7 +18,6 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-preact",
-    "gatsby-plugin-loadable-components-ssr",
     {
       resolve: "gatsby-source-contentful",
       options: {

@@ -1,36 +1,43 @@
+import { TypographyStylesProvider } from "@mantine/core"
 import { graphql } from "gatsby"
 import React from "react"
-import Helmet from "react-helmet"
-import EntryLink from "../components/EntryLink"
-import EntryTiles from "../components/EntryTiles"
+import HeroBanner from "../components/HeroBanner"
 import Layout from "../layout/Layout"
-import renderBulmaRichText from "../utils/renderRichText"
-import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
+import Contact from "../pages/contact"
+import renderRichText from "../utils/renderRichText"
 
 interface Props {
   data: any
 }
 
-const Page: React.FC<Props> = ({ data }) => {
+const InnerPage: React.FC<Props> = ({ data }) => {
   const post = data.allContentfulWebPage.edges[0].node
 
+  if (post.slug === "contact") {
+    return <Contact />
+  }
+
   return (
-    <Layout>
+    <>
       {post.slug === "/" && (
         <>
-          <h2>Latest Blog Articles</h2>
-          <div className="columns">
-            <EntryTiles edges={data.allContentfulBlogPost.edges} />
-          </div>
+          <HeroBanner />
         </>
       )}
 
-      <Helmet htmlAttributes={{ lang: "en" }}>
-        <title>{post.title}</title>
-      </Helmet>
       {post.slug !== "/" && <h1 className="title">{post.title}</h1>}
 
-      {renderBulmaRichText(post.content)}
+      <TypographyStylesProvider>
+        {renderRichText(post.content)}
+      </TypographyStylesProvider>
+    </>
+  )
+}
+
+const Page: React.FC<Props> = ({ data }) => {
+  return (
+    <Layout>
+      <InnerPage data={data} />
     </Layout>
   )
 }
@@ -65,6 +72,35 @@ export const query = graphql`
       sort: { fields: publishedOn, order: DESC }
     ) {
       ...postFragment
+    }
+  }
+`
+// TODO: Remove localFile from previewImageURL
+export const entryFragment = graphql`
+  fragment postFragment on ContentfulBlogPostConnection {
+    edges {
+      node {
+        author
+        school
+        contentful_id
+        publishedOn
+        title
+        slug
+        content {
+          raw
+        }
+        fields {
+          plain
+        }
+        previewImageURL {
+          url
+          localFile {
+            childImageSharp {
+              gatsbyImageData(aspectRatio: 1.3333)
+            }
+          }
+        }
+      }
     }
   }
 `
