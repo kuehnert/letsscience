@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import React from "react"
 import HeroBanner from "../components/HeroBanner"
 import Layout from "../layout/Layout"
-import Contact from "../pages/contact"
+import Contact from "../components/Contact"
 import renderRichText from "../utils/renderRichText"
 
 interface Props {
@@ -20,9 +20,7 @@ const InnerPage: React.FC<Props> = ({ data }) => {
   return (
     <>
       {post.slug === "/" && (
-        <>
           <HeroBanner />
-        </>
       )}
 
       {post.slug !== "/" && <h1 className="title">{post.title}</h1>}
@@ -54,9 +52,7 @@ export const query = graphql`
                 contentful_id
                 __typename
                 localFile {
-                  childrenImageSharp {
-                    gatsbyImageData
-                  }
+                  url
                 }
               }
             }
@@ -85,6 +81,7 @@ export const entryFragment = graphql`
         contentful_id
         publishedOn
         title
+        tags
         slug
         content {
           raw

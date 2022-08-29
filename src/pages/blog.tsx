@@ -12,13 +12,14 @@ const BlogIndex = ({ data }) => {
       <Grid>
         {posts.map((post, index) => (
           <Grid.Col xs={12} sm={6}>
-            <EntryCard
-              key={index}
-              author={{ name: post.node.author, description: post.node.school }}
-              image={post.node.previewImageURL?.url}
-              category={"BlogArticle"}
-              title={post.node.title}
-            />
+              <EntryCard
+                key={index}
+                author={{ name: post.node.author, description: post.node.school }}
+                image={post.node.previewImageURL?.url}
+                title={post.node.title}
+                category={post.node.tags}
+                slug={post.node.slug}
+              />
           </Grid.Col>
         ))}
       </Grid>

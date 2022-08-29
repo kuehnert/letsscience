@@ -61,12 +61,14 @@ const BlogPost: React.FC<Props> = ({ data }) => {
         {post.author}
         {post.publishedOn ? " - " + post.publishedOn : ""}
       </h2>
+      {/**
       {listLocales().length > 0 && (
         <div className="notification">
           This article is available in the following languages:
           <ul>{listLocales()}</ul>
         </div>
       )}
+       */}
 
       {renderBulmaRichText(post.content)}
     </Layout>
@@ -91,9 +93,7 @@ export const query = graphql`
                 contentful_id
                 __typename
                 localFile {
-                  childrenImageSharp {
-                    gatsbyImageData
-                  }
+                  url
                 }
               }
               ... on ContentfulEmbeddedVideo {

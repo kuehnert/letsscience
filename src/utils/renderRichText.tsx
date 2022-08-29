@@ -1,24 +1,19 @@
 import { GatsbyImage } from "gatsby-plugin-image"
 import { renderRichText as gatsbyRenderRichText } from "gatsby-source-contentful/rich-text"
-import { retrieveImageData, retrieveUrl } from "./queryUtils"
+import { retrieveUrl } from "./queryUtils"
 import React from "react"
 import YouTube from "../components/YouTube"
+import { Image } from "@mantine/core"
 
 const renderRichText = document => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
-        const gatsbyImageData = retrieveImageData(node.data.target)
+        const url = node.data.target.localFile.url
 
-        if (gatsbyImageData) {
+        if (url) {
           return (
-            <GatsbyImage
-              imgClassName="image"
-              // TODO: Implement an alt attribute
-              alt=""
-              className="ml-auto mr-auto"
-              image={gatsbyImageData}
-            />
+            <Image src={url} />
           )
         }
 
