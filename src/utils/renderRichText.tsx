@@ -4,6 +4,7 @@ import { retrieveUrl } from "./queryUtils"
 import React from "react"
 import YouTube from "../components/YouTube"
 import { Image } from "@mantine/core"
+import { Carousel } from "@mantine/carousel"
 
 const renderRichText = document => {
   const options = {
@@ -12,9 +13,7 @@ const renderRichText = document => {
         const url = node.data.target.localFile.url
 
         if (url) {
-          return (
-            <Image src={url} />
-          )
+          return <Image src={url} />
         }
 
         return null
@@ -31,8 +30,16 @@ const renderRichText = document => {
             const url = retrieveUrl(target)
             return <YouTube src={url} />
           case "ContentfulImageCarousel":
-            // TODO: use Mantine Carousel
-            return <></>
+            const images = target.images.map((image, index) => (
+              <Carousel.Slide key={index}>
+                <Image src={image.url} />
+              </Carousel.Slide>
+            ))
+            return (
+              <Carousel slideSize="70%" slideGap="md" loop withIndicators>
+                {images}
+              </Carousel>
+            )
           default:
             console.log(`Unexpected internal type: ${target.internal.type}`)
         }

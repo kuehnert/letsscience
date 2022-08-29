@@ -19,9 +19,7 @@ const InnerPage: React.FC<Props> = ({ data }) => {
 
   return (
     <>
-      {post.slug === "/" && (
-          <HeroBanner />
-      )}
+      {post.slug === "/" && <HeroBanner />}
 
       {post.slug !== "/" && <h1 className="title">{post.title}</h1>}
 

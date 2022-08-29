@@ -90,9 +90,17 @@ interface ContactIconsListProps {
 }
 
 const CONTACTDATA = [
-  { title: "Email", description: "annette.schaefer@marienschule.com", icon: IconAt },
+  {
+    title: "Email",
+    description: "annette.schaefer@marienschule.com",
+    icon: IconAt,
+  },
   { title: "Phone", description: "+49 2171 48901", icon: IconPhone },
-  { title: "Address", description: "An Sankt Remigius 21, Leverkusen", icon: IconMapPin },
+  {
+    title: "Address",
+    description: "An Sankt Remigius 21, Leverkusen",
+    icon: IconMapPin,
+  },
   { title: "Working hours", description: "8 a.m. – 4 p.m.", icon: IconSun },
 ]
 
@@ -108,15 +116,15 @@ const ContactIconsList: React.FC<ContactIconsListProps> = ({
 
 const Contact: React.FC = () => {
   return (
-      <Box
-        sx={theme => ({
-          padding: theme.spacing.xl,
-          borderRadius: theme.radius.md,
-          backgroundColor: theme.white,
-        })}
-      >
-        <ContactIconsList />
-      </Box>
+    <Box
+      sx={theme => ({
+        padding: theme.spacing.xl,
+        borderRadius: theme.radius.md,
+        backgroundColor: theme.white,
+      })}
+    >
+      <ContactIconsList />
+    </Box>
   )
 }
 

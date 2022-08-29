@@ -1,11 +1,4 @@
-import {
-  createStyles,
-  Card,
-  Image,
-  Group,
-  Text,
-  Badge,
-} from "@mantine/core"
+import { createStyles, Card, Image, Group, Text, Badge } from "@mantine/core"
 import { IconHeart, IconBookmark, IconShare } from "@tabler/icons"
 import { Link } from "gatsby"
 import React from "react"
@@ -42,15 +35,19 @@ const EntryCard: React.FC<EntryCardProps> = ({
   const { classes, theme } = useStyles()
 
   return (
-    <Card withBorder p="lg" radius="md" className={classes.card} component={Link} to={slug}>
+    <Card
+      withBorder
+      p="lg"
+      radius="md"
+      className={classes.card}
+      component={Link}
+      to={slug}
+    >
       <Card.Section mb="sm">
         <Image src={image ?? "/logo.png"} alt={title} height={180} />
       </Card.Section>
 
-      {category !== null && (
-        <Badge>{category}</Badge>
-      )}
-
+      {category !== null && <Badge>{category}</Badge>}
 
       <Text weight={700} className={classes.title} mt="xs">
         {title}
