@@ -6,13 +6,13 @@ import {
   Center,
   Burger,
   Container,
-  Image,
   Stack,
 } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { IconChevronDown } from "@tabler/icons"
-import { navigate } from "gatsby"
+import { Link } from "gatsby"
 import React from "react"
+import ErasmusLogo from "./ErasmusLogo"
 
 const useStyles = createStyles(theme => ({
   inner: {
@@ -74,23 +74,24 @@ const Navbar = ({ links }: HeaderSearchProps) => {
 
   const items = links.map(link => {
     const menuItems = link.links?.map(item => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+      <a key={item.link} href={item.link} className={classes.link}>
+        <Menu.Item>{item.label}</Menu.Item>
+      </a>
     ))
 
     if (menuItems) {
       return (
         <Menu key={link.label} trigger="hover" exitTransitionDuration={0}>
           <Menu.Target>
-            <a
-              href={link.link}
+            <Link
+              to={link.link}
               className={classes.link}
-              onClick={event => event.preventDefault()}
             >
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
                 <IconChevronDown size={12} stroke={1.5} />
               </Center>
-            </a>
+              </Link>
           </Menu.Target>
           <Menu.Dropdown>{menuItems}</Menu.Dropdown>
         </Menu>
@@ -98,16 +99,13 @@ const Navbar = ({ links }: HeaderSearchProps) => {
     }
 
     return (
-      <a
+      <Link
         key={link.label}
-        href={link.link}
+        to={link.link}
         className={classes.link}
-        onClick={() => {
-          navigate(link.link)
-        }}
       >
         {link.label}
-      </a>
+      </Link>
     )
   })
 
@@ -116,13 +114,7 @@ const Navbar = ({ links }: HeaderSearchProps) => {
       <Container>
         <div className={classes.inner}>
           <Stack justify="left" style={{ cursor: "pointer" }}>
-            <Image
-              src="/logo.png"
-              radius={"md"}
-              height={50}
-              fit="contain"
-              onClick={() => navigate("/")}
-            />
+            <ErasmusLogo />
           </Stack>
           <Group spacing={5} className={classes.links}>
             {items}

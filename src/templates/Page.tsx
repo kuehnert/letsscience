@@ -1,4 +1,4 @@
-import { TypographyStylesProvider } from "@mantine/core"
+import { Title, TypographyStylesProvider } from "@mantine/core"
 import { graphql } from "gatsby"
 import React from "react"
 import HeroBanner from "../components/HeroBanner"
@@ -21,7 +21,7 @@ const InnerPage: React.FC<Props> = ({ data }) => {
     <>
       {post.slug === "/" && <HeroBanner />}
 
-      {post.slug !== "/" && <h1 className="title">{post.title}</h1>}
+      {post.slug !== "/" && <Title>{post.title}</Title>}
 
       <TypographyStylesProvider>
         {renderRichText(post.content)}
