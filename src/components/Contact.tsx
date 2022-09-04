@@ -1,3 +1,4 @@
+import React from "react"
 import {
   createStyles,
   ThemeIcon,
@@ -7,7 +8,6 @@ import {
   Stack,
 } from "@mantine/core"
 import { IconSun, IconPhone, IconMapPin, IconAt } from "@tabler/icons"
-import React from "react"
 
 type ContactIconVariant = "white" | "gradient"
 
@@ -85,27 +85,34 @@ const ContactIcon: React.FC<ContactIconProps> = ({
 }
 
 interface ContactIconsListProps {
-  data?: ContactIconProps[]
+  data: ContactIconProps[]
   variant?: ContactIconVariant
 }
 
-const CONTACTDATA = [
+const contactData1 = [
   {
     title: "Email",
-    description: "annette.schaefer@marienschule.com",
+    description: "matthias.kuehnert@marienschule.com",
     icon: IconAt,
   },
   { title: "Phone", description: "+49 2171 48901", icon: IconPhone },
-  {
-    title: "Address",
-    description: "An Sankt Remigius 21, Leverkusen",
-    icon: IconMapPin,
-  },
+  { title: "Address", description: "An Sankt Remigius 21", icon: IconMapPin },
   { title: "Working hours", description: "8 a.m. – 4 p.m.", icon: IconSun },
 ]
 
+const contactData2 = [
+  {
+    title: "Email",
+    description: "stefanie.ludwig@marienschule.com",
+    icon: IconAt,
+  },
+  { title: "Phone", description: "+49 2171 48901", icon: IconPhone },
+  { title: "Address", description: "An Sankt Remigius 21", icon: IconMapPin },
+  { title: "Working hours", description: "7:30 a.m. – 3 p.m.", icon: IconSun },
+]
+
 const ContactIconsList: React.FC<ContactIconsListProps> = ({
-  data = CONTACTDATA,
+  data,
   variant,
 }) => {
   const items = data.map((item, index) => (
@@ -114,17 +121,33 @@ const ContactIconsList: React.FC<ContactIconsListProps> = ({
   return <Stack>{items}</Stack>
 }
 
-const Contact: React.FC = () => {
+const Contact = () => {
   return (
-    <Box
-      sx={theme => ({
-        padding: theme.spacing.xl,
-        borderRadius: theme.radius.md,
-        backgroundColor: theme.white,
-      })}
-    >
-      <ContactIconsList />
-    </Box>
+    <SimpleGrid cols={2} breakpoints={[{ maxWidth: 755, cols: 1 }]}>
+      <Box
+        sx={theme => ({
+          padding: theme.spacing.xl,
+          borderRadius: theme.radius.md,
+          backgroundImage: `linear-gradient(135deg, ${
+            theme.colors[theme.primaryColor][6]
+          } 0%, ${theme.colors[theme.primaryColor][4]} 100%)`,
+        })}
+      >
+        <ContactIconsList variant="white" data={contactData1} />
+      </Box>
+
+      <Box
+        sx={theme => ({
+          padding: theme.spacing.xl,
+          borderRadius: theme.radius.md,
+          backgroundImage: `linear-gradient(135deg, ${
+            theme.colors[theme.primaryColor][6]
+          } 0%, ${theme.colors[theme.primaryColor][4]} 100%)`,
+        })}
+      >
+        <ContactIconsList variant="white" data={contactData2} />
+      </Box>
+    </SimpleGrid>
   )
 }
 

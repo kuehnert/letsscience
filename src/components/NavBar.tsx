@@ -83,15 +83,12 @@ const Navbar = ({ links }: HeaderSearchProps) => {
       return (
         <Menu key={link.label} trigger="hover" exitTransitionDuration={0}>
           <Menu.Target>
-            <Link
-              to={link.link}
-              className={classes.link}
-            >
+            <Link to={link.link} className={classes.link}>
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
                 <IconChevronDown size={12} stroke={1.5} />
               </Center>
-              </Link>
+            </Link>
           </Menu.Target>
           <Menu.Dropdown>{menuItems}</Menu.Dropdown>
         </Menu>
@@ -99,11 +96,7 @@ const Navbar = ({ links }: HeaderSearchProps) => {
     }
 
     return (
-      <Link
-        key={link.label}
-        to={link.link}
-        className={classes.link}
-      >
+      <Link key={link.label} to={link.link} className={classes.link}>
         {link.label}
       </Link>
     )
