@@ -50,7 +50,11 @@ export const query = graphql`
                 contentful_id
                 __typename
                 localFile {
-                  url
+                  childImageSharp {
+                    fluid {
+                      srcWebp
+                    }
+                  }
                 }
               }
             }
@@ -88,10 +92,11 @@ export const entryFragment = graphql`
           plain
         }
         previewImageURL {
-          url
           localFile {
             childImageSharp {
-              gatsbyImageData(aspectRatio: 1.3333)
+              fluid {
+                srcWebp
+              }
             }
           }
         }

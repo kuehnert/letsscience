@@ -5,50 +5,58 @@ import React from "react"
 import Layout from "../layout/Layout"
 
 const TimelinePage = ({ data }) => {
-  const items = data.allContentfulTimelineItems.edges.map(k => k.node)
-
-  const getDate = (i: number) => {
-    const date = items[i].date
+  const getDate = (item: any) => {
+    const date = item.date
     if (date !== null && date !== undefined) {
       return date
     }
-    const blogArticle = items[i].associatedBlogArticle
+    const blogArticle = item.associatedBlogArticle
     if (blogArticle !== null && blogArticle !== undefined) {
       return blogArticle.publishedOn
     }
     return ""
   }
 
+  const items = data.allContentfulTimelineItem.edges
+    .map(k => k.node)
+    .sort((a, b) => new Date(getDate(a)) - new Date(getDate(b)))
+
+  const getDateFromItems = (i: number) => {
+    return getDate(items[i])
+  }
+
   return (
     <Layout>
       <Stack justify="center" align="center">
-      <Timeline>
-        {items.map((item, ind) => (
-          <Timeline.Item
-            key={ind}
-            bullet={
-              item.icon === "Event" ? (
-                <IconCalendarEvent size={12} />
-              ) : (
-                <IconCheck size={12} />
-              )
-            }
-            title={item.title}
-          >
-            {item.associatedBlogArticle !== null && (
+        <Timeline>
+          {items.map((item, ind) => (
+            <Timeline.Item
+              key={ind}
+              bullet={
+                item.icon === "Event" ? (
+                  <IconCalendarEvent size={12} />
+                ) : (
+                  <IconCheck size={12} />
+                )
+              }
+              title={item.title}
+            >
+              {item.associatedBlogArticle !== null && (
                 <Text color="dimmed" size="sm">
                   Relevant blog article:
                   <Text variant="link" component="span" inherit>
                     <Link to={`/blog/${item.associatedBlogArticle.slug}`}>
-                    {" " + item.associatedBlogArticle.title}
+                      {" " + item.associatedBlogArticle.title}
                     </Link>
                   </Text>
                 </Text>
-            )}
-            <Text size="xs" mt={4}>{getDate(ind)}</Text>
-          </Timeline.Item>
-        ))}
-      </Timeline>
+              )}
+              <Text size="xs" mt={4}>
+                {getDate(ind)}
+              </Text>
+            </Timeline.Item>
+          ))}
+        </Timeline>
       </Stack>
     </Layout>
   )
@@ -56,10 +64,7 @@ const TimelinePage = ({ data }) => {
 
 export const query = graphql`
   query timeline {
-    allContentfulTimelineItems(
-      sort: { fields: associatedBlogArticle___publishedOn }
-      filter: { node_locale: { eq: "en-GB" } }
-    ) {
+    allContentfulTimelineItem(filter: { node_locale: { eq: "en-GB" } }) {
       edges {
         node {
           title

@@ -1,4 +1,3 @@
-import { GatsbyImage } from "gatsby-plugin-image"
 import { renderRichText as gatsbyRenderRichText } from "gatsby-source-contentful/rich-text"
 import { retrieveUrl } from "./queryUtils"
 import React from "react"
@@ -10,7 +9,7 @@ const renderRichText = document => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
-        const url = node.data.target.localFile.url
+        const url = node.data.target.localFile.childImageSharp.fluid.srcWebp
 
         if (url) {
           return <Image src={url} />
@@ -32,7 +31,7 @@ const renderRichText = document => {
           case "ContentfulImageCarousel":
             const images = target.images.map((image, index) => (
               <Carousel.Slide key={index}>
-                <Image src={image.url} />
+                <Image src={image.localFile.childImageSharp.fluid.srcWebp} />
               </Carousel.Slide>
             ))
             return (

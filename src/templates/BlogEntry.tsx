@@ -95,7 +95,11 @@ export const query = graphql`
                 contentful_id
                 __typename
                 localFile {
-                  url
+                  childImageSharp {
+                    fluid {
+                      srcWebp
+                    }
+                  }
                 }
               }
               ... on ContentfulEmbeddedVideo {
@@ -109,7 +113,13 @@ export const query = graphql`
               ... on ContentfulImageCarousel {
                 contentful_id
                 images {
-                  url
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        srcWebp
+                      }
+                    }
+                  }
                 }
                 internal {
                   type

@@ -11,11 +11,13 @@ const BlogIndex = ({ data }) => {
     <Layout>
       <Grid>
         {posts.map((post, index) => (
-          <Grid.Col xs={12} sm={6}>
+          <Grid.Col xs={12} sm={6} key={index}>
             <EntryCard
-              key={index}
               author={{ name: post.node.author, description: post.node.school }}
-              image={post.node.previewImageURL?.url}
+              image={
+                post.node.previewImageURL?.localFile.childImageSharp.fluid
+                  .srcWebp
+              }
               title={post.node.title}
               category={post.node.tags}
               slug={post.node.slug}
