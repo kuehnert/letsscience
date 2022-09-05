@@ -5,6 +5,7 @@ import { Container, Space } from "@mantine/core"
 import Footer from "../components/Footer"
 
 const links = [
+  { link: "/timeline", label: "Timeline" },
   { link: "/blog", label: "Blog" },
   { link: "/app", label: "The App" },
   { link: "/materials", label: "Materials" },
