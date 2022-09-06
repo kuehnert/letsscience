@@ -5,7 +5,15 @@ import React from "react"
 import Layout from "../layout/Layout"
 
 const TimelinePage = ({ data }) => {
-  const getDate = (item: any) => {
+
+  const parseDate = (date: string): Date => {
+    console.log(date)
+    const datePattern = /^(\d{4})-(\d{2})-(\d{2})(T\d{2}:\d{2})?$/;
+    const [, year, month, day] = datePattern.exec(date)!;
+    return new Date(`${month}, ${day} ${year}`);
+  }
+
+  const getDateString = (item: any) => {
     const date = item.date
     if (date !== null && date !== undefined) {
       return date
@@ -17,18 +25,38 @@ const TimelinePage = ({ data }) => {
     return ""
   }
 
-  const items = data.allContentfulTimelineItem.edges
-    .map(k => k.node)
-    .sort((a, b) => new Date(getDate(a)) - new Date(getDate(b)))
+  const getDate = (item: any): Date => {
+    return parseDate(getDateString(item))
+  }
 
-  const getDateFromItems = (i: number) => {
+  const items: Array<any> = data.allContentfulTimelineItem.edges
+    .map(k => k.node)
+    .sort((a, b) => getDate(a) - getDate(b))
+
+  const getDateFromItems = (i: number): Date => {
     return getDate(items[i])
+  }
+
+  const isPassed = (item: any): boolean => {
+    const date = getDate(item)
+    const today = new Date()
+    return today > date
+  }
+
+  const getActiveItems = (): number => {
+    return items
+      .filter(item => isPassed(item))
+      .length
   }
 
   return (
     <Layout>
       <Stack justify="center" align="center">
-        <Timeline>
+        <Timeline
+          active={getActiveItems() - 1}
+          bulletSize={24}
+          lineWidth={2}
+        >
           {items.map((item, ind) => (
             <Timeline.Item
               key={ind}
@@ -43,7 +71,7 @@ const TimelinePage = ({ data }) => {
             >
               {item.associatedBlogArticle !== null && (
                   <Text color="dimmed" size="sm" variant="link" component="span" inherit>
-                    <Link to={`/blog/${item.associatedBlogArticle.slug}`}>
+                    <Link to={`/blog/${item.associatedBlogArticle.slug}`} className={"solidLink"}>
                       <Text>
                         {item.associatedBlogArticle.title}
                       </Text>
@@ -51,7 +79,7 @@ const TimelinePage = ({ data }) => {
                   </Text>
               )}
               <Text size="xs" mt={4}>
-                {getDate(ind)}
+                {getDateFromItems(ind).toDateString()}
               </Text>
             </Timeline.Item>
           ))}
