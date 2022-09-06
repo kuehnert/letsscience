@@ -44,7 +44,9 @@ const TimelinePage = ({ data }) => {
               {item.associatedBlogArticle !== null && (
                   <Text color="dimmed" size="sm" variant="link" component="span" inherit>
                     <Link to={`/blog/${item.associatedBlogArticle.slug}`}>
-                      {item.associatedBlogArticle.title}
+                      <Text>
+                        {item.associatedBlogArticle.title}
+                      </Text>
                     </Link>
                   </Text>
               )}
