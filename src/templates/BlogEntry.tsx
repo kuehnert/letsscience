@@ -5,17 +5,22 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import renderBulmaRichText from "../utils/renderRichText"
 import { Helmet } from "react-helmet"
 import { Title } from "@mantine/core"
+import { useDocumentTitle } from "@mantine/hooks"
 
 interface Props {
   data: any
 }
 
 const BlogPost: React.FC<Props> = ({ data }) => {
+
+
   const posts = data.allContentfulBlogPost.edges
   const engPost = posts.filter(
     ({ node: { node_locale } }) => node_locale == "en-GB"
   )[0]
   const [post, setPost] = useState(engPost.node)
+
+  useDocumentTitle(post.title)
 
   const setLocale = locale => {
     setPost(posts.filter(({ node }) => node.node_locale == locale)[0].node)

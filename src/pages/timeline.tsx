@@ -1,10 +1,13 @@
 import { Timeline, Text, Stack } from "@mantine/core"
+import { useDocumentTitle } from "@mantine/hooks"
 import { IconCalendarEvent, IconCheck } from "@tabler/icons"
 import { graphql, Link } from "gatsby"
 import React from "react"
 import Layout from "../layout/Layout"
 
 const TimelinePage = ({ data }) => {
+
+  useDocumentTitle("Timeline")
 
   const parseDate = (date: string): Date => {
     console.log(date)

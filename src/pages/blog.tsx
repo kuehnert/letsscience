@@ -1,4 +1,5 @@
 import { Grid } from "@mantine/core"
+import { useDocumentTitle } from "@mantine/hooks"
 import { graphql } from "gatsby"
 import React from "react"
 import EntryCard from "../components/EntryCard"
@@ -7,6 +8,9 @@ import Layout from "../layout/Layout"
 const colors = ["teal", "grape", "violet", "indigo", "cyan",  "red", "green", "lime", "yellow", "pink", "orange"]
 
 const BlogIndex = ({ data }) => {
+
+  useDocumentTitle("Blog")
+
   const { edges: posts } = data.allContentfulBlogPost
 
   // Get every unique category

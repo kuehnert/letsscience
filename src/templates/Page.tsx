@@ -1,4 +1,5 @@
 import { Title, TypographyStylesProvider } from "@mantine/core"
+import { useDocumentTitle } from "@mantine/hooks"
 import { graphql } from "gatsby"
 import React from "react"
 import HeroBanner from "../components/HeroBanner"
@@ -11,6 +12,7 @@ interface Props {
 
 const InnerPage: React.FC<Props> = ({ data }) => {
   const post = data.allContentfulWebPage.edges[0].node
+  useDocumentTitle(post.title)
 
   return (
     <>

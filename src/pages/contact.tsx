@@ -9,6 +9,7 @@ import {
 } from "@mantine/core"
 import { IconSun, IconPhone, IconMapPin, IconAt } from "@tabler/icons"
 import Layout from "../layout/Layout"
+import { useDocumentTitle } from "@mantine/hooks"
 
 type ContactIconVariant = "white" | "gradient"
 
@@ -123,6 +124,9 @@ const ContactIconsList: React.FC<ContactIconsListProps> = ({
 }
 
 const ContactPage = () => {
+
+  useDocumentTitle("Contact")
+
   return (
     <Layout>
     <SimpleGrid cols={2} breakpoints={[{ maxWidth: 755, cols: 1 }]}>
