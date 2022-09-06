@@ -6,6 +6,7 @@ import {
   ActionIcon,
   Stack,
   Anchor,
+  Text
 } from "@mantine/core"
 import {
   IconBrandTwitter,
@@ -53,7 +54,7 @@ const Footer = () => {
         </Stack>
         <Group spacing={0} className={classes.links} position="right" noWrap>
           <Anchor component={Link} to="/privacy" color="dimmed" size="sm">
-            Privacy
+            <Text>Privacy</Text>
           </Anchor>
           <ActionIcon
             size="lg"

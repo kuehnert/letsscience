@@ -42,14 +42,11 @@ const TimelinePage = ({ data }) => {
               title={item.title}
             >
               {item.associatedBlogArticle !== null && (
-                <Text color="dimmed" size="sm">
-                  Relevant blog article:
-                  <Text variant="link" component="span" inherit>
+                  <Text color="dimmed" size="sm" variant="link" component="span" inherit>
                     <Link to={`/blog/${item.associatedBlogArticle.slug}`}>
-                      {" " + item.associatedBlogArticle.title}
+                      {item.associatedBlogArticle.title}
                     </Link>
                   </Text>
-                </Text>
               )}
               <Text size="xs" mt={4}>
                 {getDate(ind)}

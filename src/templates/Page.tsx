@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import React from "react"
 import HeroBanner from "../components/HeroBanner"
 import Layout from "../layout/Layout"
-import Contact from "../components/Contact"
 import renderRichText from "../utils/renderRichText"
 
 interface Props {
@@ -12,10 +11,6 @@ interface Props {
 
 const InnerPage: React.FC<Props> = ({ data }) => {
   const post = data.allContentfulWebPage.edges[0].node
-
-  if (post.slug === "contact") {
-    return <Contact />
-  }
 
   return (
     <>

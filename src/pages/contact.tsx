@@ -5,9 +5,10 @@ import {
   Text,
   SimpleGrid,
   Box,
-  Stack,
+  Stack
 } from "@mantine/core"
 import { IconSun, IconPhone, IconMapPin, IconAt } from "@tabler/icons"
+import Layout from "../layout/Layout"
 
 type ContactIconVariant = "white" | "gradient"
 
@@ -121,8 +122,9 @@ const ContactIconsList: React.FC<ContactIconsListProps> = ({
   return <Stack>{items}</Stack>
 }
 
-const Contact = () => {
+const ContactPage = () => {
   return (
+    <Layout>
     <SimpleGrid cols={2} breakpoints={[{ maxWidth: 755, cols: 1 }]}>
       <Box
         sx={theme => ({
@@ -148,7 +150,8 @@ const Contact = () => {
         <ContactIconsList variant="white" data={contactData2} />
       </Box>
     </SimpleGrid>
+    </Layout>
   )
 }
 
-export default Contact
+export default ContactPage
