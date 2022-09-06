@@ -6,7 +6,7 @@ import {
   ActionIcon,
   Stack,
   Anchor,
-  Text
+  Text,
 } from "@mantine/core"
 import {
   IconBrandTwitter,

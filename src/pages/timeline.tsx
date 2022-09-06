@@ -6,14 +6,13 @@ import React from "react"
 import Layout from "../layout/Layout"
 
 const TimelinePage = ({ data }) => {
-
   useDocumentTitle("Timeline")
 
   const parseDate = (date: string): Date => {
     console.log(date)
-    const datePattern = /^(\d{4})-(\d{2})-(\d{2})(T\d{2}:\d{2})?$/;
-    const [, year, month, day] = datePattern.exec(date)!;
-    return new Date(`${month}, ${day} ${year}`);
+    const datePattern = /^(\d{4})-(\d{2})-(\d{2})(T\d{2}:\d{2})?$/
+    const [, year, month, day] = datePattern.exec(date)!
+    return new Date(`${month}, ${day} ${year}`)
   }
 
   const getDateString = (item: any) => {
@@ -47,19 +46,13 @@ const TimelinePage = ({ data }) => {
   }
 
   const getActiveItems = (): number => {
-    return items
-      .filter(item => isPassed(item))
-      .length
+    return items.filter(item => isPassed(item)).length
   }
 
   return (
     <Layout>
       <Stack justify="center" align="center">
-        <Timeline
-          active={getActiveItems() - 1}
-          bulletSize={24}
-          lineWidth={2}
-        >
+        <Timeline active={getActiveItems() - 1} bulletSize={24} lineWidth={2}>
           {items.map((item, ind) => (
             <Timeline.Item
               key={ind}
@@ -73,13 +66,20 @@ const TimelinePage = ({ data }) => {
               title={item.title}
             >
               {item.associatedBlogArticle !== null && (
-                  <Text color="dimmed" size="sm" variant="link" component="span" inherit>
-                    <Link to={`/blog/${item.associatedBlogArticle.slug}`} className={"solidLink"}>
-                      <Text>
-                        {item.associatedBlogArticle.title}
-                      </Text>
-                    </Link>
-                  </Text>
+                <Text
+                  color="dimmed"
+                  size="sm"
+                  variant="link"
+                  component="span"
+                  inherit
+                >
+                  <Link
+                    to={`/blog/${item.associatedBlogArticle.slug}`}
+                    className={"solidLink"}
+                  >
+                    <Text>{item.associatedBlogArticle.title}</Text>
+                  </Link>
+                </Text>
               )}
               <Text size="xs" mt={4}>
                 {getDateFromItems(ind).toDateString()}

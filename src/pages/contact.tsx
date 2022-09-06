@@ -5,7 +5,7 @@ import {
   Text,
   SimpleGrid,
   Box,
-  Stack
+  Stack,
 } from "@mantine/core"
 import { IconSun, IconPhone, IconMapPin, IconAt } from "@tabler/icons"
 import Layout from "../layout/Layout"
@@ -124,36 +124,35 @@ const ContactIconsList: React.FC<ContactIconsListProps> = ({
 }
 
 const ContactPage = () => {
-
   useDocumentTitle("Contact")
 
   return (
     <Layout>
-    <SimpleGrid cols={2} breakpoints={[{ maxWidth: 755, cols: 1 }]}>
-      <Box
-        sx={theme => ({
-          padding: theme.spacing.xl,
-          borderRadius: theme.radius.md,
-          backgroundImage: `linear-gradient(135deg, ${
-            theme.colors[theme.primaryColor][6]
-          } 0%, ${theme.colors[theme.primaryColor][4]} 100%)`,
-        })}
-      >
-        <ContactIconsList variant="white" data={contactData1} />
-      </Box>
+      <SimpleGrid cols={2} breakpoints={[{ maxWidth: 755, cols: 1 }]}>
+        <Box
+          sx={theme => ({
+            padding: theme.spacing.xl,
+            borderRadius: theme.radius.md,
+            backgroundImage: `linear-gradient(135deg, ${
+              theme.colors[theme.primaryColor][6]
+            } 0%, ${theme.colors[theme.primaryColor][4]} 100%)`,
+          })}
+        >
+          <ContactIconsList variant="white" data={contactData1} />
+        </Box>
 
-      <Box
-        sx={theme => ({
-          padding: theme.spacing.xl,
-          borderRadius: theme.radius.md,
-          backgroundImage: `linear-gradient(135deg, ${
-            theme.colors[theme.primaryColor][6]
-          } 0%, ${theme.colors[theme.primaryColor][4]} 100%)`,
-        })}
-      >
-        <ContactIconsList variant="white" data={contactData2} />
-      </Box>
-    </SimpleGrid>
+        <Box
+          sx={theme => ({
+            padding: theme.spacing.xl,
+            borderRadius: theme.radius.md,
+            backgroundImage: `linear-gradient(135deg, ${
+              theme.colors[theme.primaryColor][6]
+            } 0%, ${theme.colors[theme.primaryColor][4]} 100%)`,
+          })}
+        >
+          <ContactIconsList variant="white" data={contactData2} />
+        </Box>
+      </SimpleGrid>
     </Layout>
   )
 }

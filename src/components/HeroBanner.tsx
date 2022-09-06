@@ -73,11 +73,14 @@ const HeroBanner: React.FC = () => {
           environment
         </Title>
         <Text color="dimmed" mt="md">
-          Droughts, floods and other extreme weather events are occurring across
-          the globe. These issues cannot be solved on a local scale anymore and
-          are issues of global importance. In the international collaboration of
-          Erasmus+ we hope to contribute our part to the fight against the
-          global climate crisis.
+          In our lives, we constantly interact with the environment, which is
+          why we could not live at all without it. That is why the signals we
+          receive from the environment today often seem frightening. Examples
+          like huge forest fires in Spain, momentous floods in Germany or
+          summers of the century all over Europe, are obvious signs that we need
+          to take action ourselves. We as a group from all over Europe think
+          that now is the time to act! With our three guidelines, we want to
+          inspire ourselves and others to learn, come together and take action.
         </Text>
 
         <List
@@ -90,16 +93,22 @@ const HeroBanner: React.FC = () => {
             </ThemeIcon>
           }
         >
-          <List.Item>
-            <b>Global collaboration</b> – the Erasmus+ project spans across
-            several european nations
+          <List.Item icon={
+            <ThemeIcon size={20} radius="xl">
+              <IconCheck size={12} stroke={1.5} />
+            </ThemeIcon>
+          }>
+            <b>Understanding</b> – Learning about our environment and the
+            changes it is going through and getting a broader understanding of
+            it
           </List.Item>
           <List.Item>
-            <b>Eco-friendly</b> – our goal is to fight climate change
+            <b>Cooperating</b> – Working as a community, who is stronger than
+            the individual and finding solutions together through communication
+            and exchanging ideas
           </List.Item>
           <List.Item>
-            <b>Raising awareness</b> – one of the goals is to improve the
-            ecological footprint of our local communities
+            <b>Engaging</b> – Starting to actively engage and change things
           </List.Item>
         </List>
       </div>

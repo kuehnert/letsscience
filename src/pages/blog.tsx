@@ -5,16 +5,29 @@ import React from "react"
 import EntryCard from "../components/EntryCard"
 import Layout from "../layout/Layout"
 
-const colors = ["teal", "grape", "violet", "indigo", "cyan",  "red", "green", "lime", "yellow", "pink", "orange"]
+const colors = [
+  "teal",
+  "grape",
+  "violet",
+  "indigo",
+  "cyan",
+  "red",
+  "green",
+  "lime",
+  "yellow",
+  "pink",
+  "orange",
+]
 
 const BlogIndex = ({ data }) => {
-
   useDocumentTitle("Blog")
 
   const { edges: posts } = data.allContentfulBlogPost
 
   // Get every unique category
-  const categories = [... new Set(posts.flatMap(post => post.node.tags))].filter(x => x !== null)
+  const categories = [...new Set(posts.flatMap(post => post.node.tags))].filter(
+    x => x !== null
+  )
   // Create a map, which maps each category to a color
   const colorMap = (() => {
     const res = {}
@@ -23,7 +36,6 @@ const BlogIndex = ({ data }) => {
     })
     return res
   })()
-  
 
   return (
     <Layout>
@@ -33,7 +45,8 @@ const BlogIndex = ({ data }) => {
             <EntryCard
               author={{ name: post.node.author, description: post.node.school }}
               image={
-                post.node.previewImageURL?.localFile.childImageSharp.fluid.srcWebp
+                post.node.previewImageURL?.localFile.childImageSharp.fluid
+                  .srcWebp
               }
               title={post.node.title}
               category={post.node.tags}

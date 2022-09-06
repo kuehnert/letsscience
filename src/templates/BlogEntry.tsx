@@ -12,8 +12,6 @@ interface Props {
 }
 
 const BlogPost: React.FC<Props> = ({ data }) => {
-
-
   const posts = data.allContentfulBlogPost.edges
   const engPost = posts.filter(
     ({ node: { node_locale } }) => node_locale == "en-GB"

@@ -32,7 +32,7 @@ const EntryCard: React.FC<EntryCardProps> = ({
   title,
   author,
   slug,
-  colorMap
+  colorMap,
 }: EntryCardProps) => {
   const { classes, theme } = useStyles()
 
@@ -49,7 +49,9 @@ const EntryCard: React.FC<EntryCardProps> = ({
         <Image src={image ?? "/logo.png"} alt={title} height={180} />
       </Card.Section>
 
-      {category !== null && <Badge color={colorMap[category]}>{category}</Badge>}
+      {category !== null && (
+        <Badge color={colorMap[category]}>{category}</Badge>
+      )}
 
       <Text weight={700} className={classes.title} mt="xs">
         {title}
