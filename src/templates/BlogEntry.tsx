@@ -4,7 +4,7 @@ import Layout from "../layout/Layout"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import renderBulmaRichText from "../utils/renderRichText"
 import { Helmet } from "react-helmet"
-import { Title } from "@mantine/core"
+import { Title, TypographyStylesProvider } from "@mantine/core"
 import { useDocumentTitle } from "@mantine/hooks"
 
 interface Props {
@@ -75,7 +75,9 @@ const BlogPost: React.FC<Props> = ({ data }) => {
       )}
        */}
 
-      {renderBulmaRichText(post.content)}
+       <TypographyStylesProvider>
+        {renderBulmaRichText(post.content)}
+       </TypographyStylesProvider>
     </Layout>
   )
 }
