@@ -5,7 +5,7 @@ import React from "react"
 const ErasmusLogo: React.FC = () => {
   return (
     <Image
-      src="/smallLogo.png"
+      src="/smallLogo.webp"
       radius={"md"}
       height={50}
       fit="contain"

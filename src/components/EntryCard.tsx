@@ -46,7 +46,7 @@ const EntryCard: React.FC<EntryCardProps> = ({
       to={slug}
     >
       <Card.Section mb="sm">
-        <Image src={image ?? "/logo.png"} alt={title} height={180} />
+        <Image src={image ?? "/logo.webp"} alt={title} height={180} />
       </Card.Section>
 
       {category !== null && (

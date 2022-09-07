@@ -114,7 +114,7 @@ const HeroBanner: React.FC = () => {
           </List.Item>
         </List>
       </div>
-      <Image src={"./logo.png"} className={classes.image} />
+      <Image src={"./logo.webp"} className={classes.image} />
     </div>
   )
 }
