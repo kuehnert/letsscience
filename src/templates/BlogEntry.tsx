@@ -75,9 +75,9 @@ const BlogPost: React.FC<Props> = ({ data }) => {
       )}
        */}
 
-       <TypographyStylesProvider>
+      <TypographyStylesProvider>
         {renderBulmaRichText(post.content)}
-       </TypographyStylesProvider>
+      </TypographyStylesProvider>
     </Layout>
   )
 }

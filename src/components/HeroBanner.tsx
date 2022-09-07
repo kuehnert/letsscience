@@ -93,11 +93,13 @@ const HeroBanner: React.FC = () => {
             </ThemeIcon>
           }
         >
-          <List.Item icon={
-            <ThemeIcon size={20} radius="xl">
-              <IconCheck size={12} stroke={1.5} />
-            </ThemeIcon>
-          }>
+          <List.Item
+            icon={
+              <ThemeIcon size={20} radius="xl">
+                <IconCheck size={12} stroke={1.5} />
+              </ThemeIcon>
+            }
+          >
             <b>Understanding</b> – Learning about our environment and the
             changes it is going through and getting a broader understanding of
             it

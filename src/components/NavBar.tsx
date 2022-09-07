@@ -7,6 +7,8 @@ import {
   Burger,
   Container,
   Stack,
+  Transition,
+  Paper,
 } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { IconChevronDown } from "@tabler/icons"
@@ -29,6 +31,29 @@ const useStyles = createStyles(theme => ({
   },
 
   burger: {
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  chevron: {
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  dropdown: {
+    position: "absolute",
+    top: 56,
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
+    borderTopWidth: 0,
+    overflow: "hidden",
+    padding: "8px 12px",
+
     [theme.fn.largerThan("sm")]: {
       display: "none",
     },
@@ -86,7 +111,11 @@ const Navbar = ({ links }: HeaderSearchProps) => {
             <Link to={link.link} className={classes.link}>
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
-                <IconChevronDown size={12} stroke={1.5} />
+                <IconChevronDown
+                  className={classes.chevron}
+                  size={12}
+                  stroke={1.5}
+                />
               </Center>
             </Link>
           </Menu.Target>
@@ -119,6 +148,15 @@ const Navbar = ({ links }: HeaderSearchProps) => {
             size="sm"
           />
         </div>
+        <Transition transition="pop-top-right" duration={200} mounted={opened}>
+          {styles => (
+            <Paper className={classes.dropdown} withBorder style={styles}>
+              <Stack align="flex-start" spacing="xs">
+                {items}
+              </Stack>
+            </Paper>
+          )}
+        </Transition>
       </Container>
     </Header>
   )
