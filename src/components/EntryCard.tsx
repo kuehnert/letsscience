@@ -1,5 +1,4 @@
-import { createStyles, Card, Image, Group, Text, Badge } from "@mantine/core"
-import { IconHeart, IconBookmark, IconShare } from "@tabler/icons"
+import { createStyles, Card, Image, Group, Text, Badge, Space } from "@mantine/core"
 import { Link } from "gatsby"
 import React from "react"
 
@@ -7,11 +6,19 @@ const useStyles = createStyles(theme => ({
   card: {
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+      height: "100%"
   },
 
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    whiteSpace: 'break-spaces',
   },
+
+  author: {
+    marginTop: "auto",
+    position: "absolute",
+    bottom: 0,
+  }
 }))
 
 interface EntryCardProps {
@@ -52,12 +59,16 @@ const EntryCard: React.FC<EntryCardProps> = ({
       {category !== null && (
         <Badge color={colorMap[category]}>{category}</Badge>
       )}
+      
+      {category === null && (
+      <Space h={"xl"} />
+      )}
 
       <Text weight={700} className={classes.title} mt="xs">
         {title}
       </Text>
 
-      <Group mt="lg">
+      <Group mt={"md"}>
         <div>
           <Text weight={500}>{author.name}</Text>
           <Text size="xs" color="dimmed">

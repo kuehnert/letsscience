@@ -3,6 +3,7 @@ import { useDocumentTitle } from "@mantine/hooks"
 import { graphql } from "gatsby"
 import React from "react"
 import HeroBanner from "../components/HeroBanner"
+import BlogShowCase from "../components/BlogShowCase"
 import Layout from "../layout/Layout"
 import renderRichText from "../utils/renderRichText"
 
@@ -19,6 +20,10 @@ const InnerPage: React.FC<Props> = ({ data }) => {
       {post.slug === "/" && <HeroBanner />}
 
       {post.slug !== "/" && <Title>{post.title}</Title>}
+
+      {post.slug === "/" && 
+        <BlogShowCase />
+      }
 
       <TypographyStylesProvider>
         {renderRichText(post.content)}

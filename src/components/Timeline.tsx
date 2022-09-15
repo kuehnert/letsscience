@@ -1,15 +1,34 @@
 import { Timeline, Text, Stack } from "@mantine/core"
 import { useDocumentTitle } from "@mantine/hooks"
 import { IconCalendarEvent, IconCheck } from "@tabler/icons"
-import { graphql, Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
 import Layout from "../layout/Layout"
 
-const TimelinePage = ({ data }) => {
+const TimelinePage = () => {
   useDocumentTitle("Timeline")
 
+  const data = useStaticQuery(graphql`
+  query timeline {
+    allContentfulTimelineItem(filter: { node_locale: { eq: "en-GB" } }) {
+      edges {
+        node {
+          title
+          associatedBlogArticle {
+            slug
+            title
+            publishedOn
+          }
+          icon
+          date
+        }
+      }
+    }
+  }
+`
+)
+
   const parseDate = (date: string): Date => {
-    console.log(date)
     const datePattern = /^(\d{4})-(\d{2})-(\d{2})(T\d{2}:\d{2})?$/
     const [, year, month, day] = datePattern.exec(date)!
     return new Date(`${month}, ${day} ${year}`)
@@ -50,7 +69,6 @@ const TimelinePage = ({ data }) => {
   }
 
   return (
-    <Layout>
       <Stack justify="center" align="center">
         <Timeline active={getActiveItems() - 1} bulletSize={24} lineWidth={2}>
           {items.map((item, ind) => (
@@ -88,27 +106,7 @@ const TimelinePage = ({ data }) => {
           ))}
         </Timeline>
       </Stack>
-    </Layout>
   )
 }
-
-export const query = graphql`
-  query timeline {
-    allContentfulTimelineItem(filter: { node_locale: { eq: "en-GB" } }) {
-      edges {
-        node {
-          title
-          associatedBlogArticle {
-            slug
-            title
-            publishedOn
-          }
-          icon
-          date
-        }
-      }
-    }
-  }
-`
 
 export default TimelinePage

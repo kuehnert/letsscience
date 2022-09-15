@@ -4,43 +4,17 @@ import { graphql } from "gatsby"
 import React from "react"
 import EntryCard from "../components/EntryCard"
 import Layout from "../layout/Layout"
-
-const colors = [
-  "teal",
-  "grape",
-  "violet",
-  "indigo",
-  "cyan",
-  "red",
-  "green",
-  "lime",
-  "yellow",
-  "pink",
-  "orange",
-]
+import colorMap from "../utils/colorMap"
 
 const BlogIndex = ({ data }) => {
   useDocumentTitle("Blog")
 
   const { edges: posts } = data.allContentfulBlogPost
 
-  // Get every unique category
-  const categories = [...new Set(posts.flatMap(post => post.node.tags))].filter(
-    x => x !== null
-  )
-  // Create a map, which maps each category to a color
-  const colorMap = (() => {
-    const res = {}
-    categories.forEach((category, i) => {
-      res[category as string] = colors[i % colors.length]
-    })
-    return res
-  })()
-
   return (
     <Layout>
       <Grid>
-        {posts.map((post, index) => (
+        {posts.map((post, index): JSX.Element => (
           <Grid.Col xs={12} sm={6} key={index}>
             <EntryCard
               author={{ name: post.node.author, description: post.node.school }}
@@ -51,7 +25,7 @@ const BlogIndex = ({ data }) => {
               title={post.node.title}
               category={post.node.tags}
               slug={post.node.slug}
-              colorMap={colorMap}
+              colorMap={colorMap(posts)}
             />
           </Grid.Col>
         ))}

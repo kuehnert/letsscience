@@ -6,7 +6,6 @@ import Footer from "../components/Footer"
 
 const links = [
   { link: "/blog", label: "Blog" },
-  { link: "/timeline", label: "Timeline" },
   { link: "/app", label: "The App" },
   { link: "/partners", label: "Partners" },
   {
@@ -29,7 +28,7 @@ const Layout = ({ children }) => {
       <div id="content">
         <NavBar links={links} />
         <Container>{children}</Container>
-        <Space h="xs" />
+        <Space h="xl" />
       </div>
       <Footer />
     </>
