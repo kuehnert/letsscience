@@ -11,14 +11,11 @@ module.exports = {
     author: "Matthias Kühnert",
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
     "gatsby-plugin-catch-links",
     // Fixes Contentful implementation: https://github.com/sanity-io/gatsby-source-sanity/issues/122#issuecomment-958748858
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-plugin-preact",
-    "gatsby-plugin-loadable-components-ssr",
     {
       resolve: "gatsby-source-contentful",
       options: {

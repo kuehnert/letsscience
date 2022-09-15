@@ -2,7 +2,6 @@ const {
   documentToPlainTextString,
 } = require("@contentful/rich-text-plain-text-renderer")
 const path = require(`path`)
-const { node } = require("prop-types")
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions

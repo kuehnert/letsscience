@@ -1,36 +1,39 @@
+import { Title, TypographyStylesProvider } from "@mantine/core"
+import { useDocumentTitle } from "@mantine/hooks"
 import { graphql } from "gatsby"
 import React from "react"
-import Helmet from "react-helmet"
-import EntryLink from "../components/EntryLink"
-import EntryTiles from "../components/EntryTiles"
+import HeroBanner from "../components/HeroBanner"
+import BlogShowCase from "../components/BlogShowCase"
 import Layout from "../layout/Layout"
-import renderBulmaRichText from "../utils/renderRichText"
-import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
+import renderRichText from "../utils/renderRichText"
 
 interface Props {
   data: any
 }
 
-const Page: React.FC<Props> = ({ data }) => {
+const InnerPage: React.FC<Props> = ({ data }) => {
   const post = data.allContentfulWebPage.edges[0].node
+  useDocumentTitle(post.title)
 
   return (
+    <>
+      {post.slug === "/" && <HeroBanner />}
+
+      {post.slug !== "/" && <Title>{post.title}</Title>}
+
+      {post.slug === "/" && <BlogShowCase />}
+
+      <TypographyStylesProvider>
+        {renderRichText(post.content)}
+      </TypographyStylesProvider>
+    </>
+  )
+}
+
+const Page: React.FC<Props> = ({ data }) => {
+  return (
     <Layout>
-      {post.slug === "/" && (
-        <>
-          <h2>Latest Blog Articles</h2>
-          <div className="columns">
-            <EntryTiles edges={data.allContentfulBlogPost.edges} />
-          </div>
-        </>
-      )}
-
-      <Helmet htmlAttributes={{ lang: "en" }}>
-        <title>{post.title}</title>
-      </Helmet>
-      {post.slug !== "/" && <h1 className="title">{post.title}</h1>}
-
-      {renderBulmaRichText(post.content)}
+      <InnerPage data={data} />
     </Layout>
   )
 }
@@ -47,8 +50,10 @@ export const query = graphql`
                 contentful_id
                 __typename
                 localFile {
-                  childrenImageSharp {
-                    gatsbyImageData
+                  childImageSharp {
+                    fluid {
+                      srcWebp
+                    }
                   }
                 }
               }
@@ -65,6 +70,37 @@ export const query = graphql`
       sort: { fields: publishedOn, order: DESC }
     ) {
       ...postFragment
+    }
+  }
+`
+// TODO: Remove localFile from previewImageURL
+export const entryFragment = graphql`
+  fragment postFragment on ContentfulBlogPostConnection {
+    edges {
+      node {
+        author
+        school
+        contentful_id
+        publishedOn
+        title
+        tags
+        slug
+        content {
+          raw
+        }
+        fields {
+          plain
+        }
+        previewImageURL {
+          localFile {
+            childImageSharp {
+              fluid {
+                srcWebp
+              }
+            }
+          }
+        }
+      }
     }
   }
 `

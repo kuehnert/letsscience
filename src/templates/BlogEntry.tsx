@@ -4,6 +4,8 @@ import Layout from "../layout/Layout"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import renderBulmaRichText from "../utils/renderRichText"
 import { Helmet } from "react-helmet"
+import { Title, TypographyStylesProvider } from "@mantine/core"
+import { useDocumentTitle } from "@mantine/hooks"
 
 interface Props {
   data: any
@@ -15,6 +17,8 @@ const BlogPost: React.FC<Props> = ({ data }) => {
     ({ node: { node_locale } }) => node_locale == "en-GB"
   )[0]
   const [post, setPost] = useState(engPost.node)
+
+  useDocumentTitle(post.title)
 
   const setLocale = locale => {
     setPost(posts.filter(({ node }) => node.node_locale == locale)[0].node)
@@ -56,22 +60,24 @@ const BlogPost: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>{post.title}</title>
-      </Helmet>
-      <h1 className="title">{post.title}</h1>
-      <h2 className="subtitle is-6">
+      <Title>{post.title}</Title>
+      <Title order={2}>
+        {" "}
         {post.author}
         {post.publishedOn ? " - " + post.publishedOn : ""}
-      </h2>
+      </Title>
+      {/**
       {listLocales().length > 0 && (
         <div className="notification">
           This article is available in the following languages:
           <ul>{listLocales()}</ul>
         </div>
       )}
+       */}
 
-      {renderBulmaRichText(post.content)}
+      <TypographyStylesProvider>
+        {renderBulmaRichText(post.content)}
+      </TypographyStylesProvider>
     </Layout>
   )
 }
@@ -94,8 +100,10 @@ export const query = graphql`
                 contentful_id
                 __typename
                 localFile {
-                  childrenImageSharp {
-                    gatsbyImageData
+                  childImageSharp {
+                    fluid {
+                      srcWebp
+                    }
                   }
                 }
               }
@@ -110,7 +118,13 @@ export const query = graphql`
               ... on ContentfulImageCarousel {
                 contentful_id
                 images {
-                  gatsbyImageData
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        srcWebp
+                      }
+                    }
+                  }
                 }
                 internal {
                   type
