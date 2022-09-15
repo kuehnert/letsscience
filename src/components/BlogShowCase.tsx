@@ -1,12 +1,14 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { Grid, Title } from "@mantine/core";
+import { Grid, Title } from "@mantine/core"
 import EntryCard from "./EntryCard"
 import colorMap from "../utils/colorMap"
 import Timeline from "./Timeline"
 
 const BlogShowcase: React.FC = () => {
-  const {allContentfulBlogPost: { edges: posts}} = useStaticQuery(graphql`
+  const {
+    allContentfulBlogPost: { edges: posts },
+  } = useStaticQuery(graphql`
     query BlogShowCase {
       allContentfulBlogPost(
         filter: { node_locale: { eq: "en-GB" } }
@@ -20,10 +22,10 @@ const BlogShowcase: React.FC = () => {
 
   const maxTitleLength = Math.max(...posts.map(post => post.node.title.length))
 
-  return <>
-  <Title order={2}>
-  Latest Blog Articles </Title>
-  <Grid>
+  return (
+    <>
+      <Title order={2}>Latest Blog Articles </Title>
+      <Grid>
         {posts.map((post, index) => (
           <Grid.Col xs={12} sm={4} key={index}>
             <EntryCard
@@ -42,8 +44,9 @@ const BlogShowcase: React.FC = () => {
         <Grid.Col sm={4}>
           <Timeline />
         </Grid.Col>
-  </Grid>
-</>
+      </Grid>
+    </>
+  )
 }
 
 export default BlogShowcase

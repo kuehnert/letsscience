@@ -14,21 +14,26 @@ const BlogIndex = ({ data }) => {
   return (
     <Layout>
       <Grid>
-        {posts.map((post, index): JSX.Element => (
-          <Grid.Col xs={12} sm={6} key={index}>
-            <EntryCard
-              author={{ name: post.node.author, description: post.node.school }}
-              image={
-                post.node.previewImageURL?.localFile.childImageSharp.fluid
-                  .srcWebp
-              }
-              title={post.node.title}
-              category={post.node.tags}
-              slug={post.node.slug}
-              colorMap={colorMap(posts)}
-            />
-          </Grid.Col>
-        ))}
+        {posts.map(
+          (post, index): JSX.Element => (
+            <Grid.Col xs={12} sm={6} key={index}>
+              <EntryCard
+                author={{
+                  name: post.node.author,
+                  description: post.node.school,
+                }}
+                image={
+                  post.node.previewImageURL?.localFile.childImageSharp.fluid
+                    .srcWebp
+                }
+                title={post.node.title}
+                category={post.node.tags}
+                slug={post.node.slug}
+                colorMap={colorMap(posts)}
+              />
+            </Grid.Col>
+          )
+        )}
       </Grid>
     </Layout>
   )

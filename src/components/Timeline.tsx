@@ -9,24 +9,23 @@ const TimelinePage = () => {
   useDocumentTitle("Timeline")
 
   const data = useStaticQuery(graphql`
-  query timeline {
-    allContentfulTimelineItem(filter: { node_locale: { eq: "en-GB" } }) {
-      edges {
-        node {
-          title
-          associatedBlogArticle {
-            slug
+    query timeline {
+      allContentfulTimelineItem(filter: { node_locale: { eq: "en-GB" } }) {
+        edges {
+          node {
             title
-            publishedOn
+            associatedBlogArticle {
+              slug
+              title
+              publishedOn
+            }
+            icon
+            date
           }
-          icon
-          date
         }
       }
     }
-  }
-`
-)
+  `)
 
   const parseDate = (date: string): Date => {
     const datePattern = /^(\d{4})-(\d{2})-(\d{2})(T\d{2}:\d{2})?$/
@@ -69,43 +68,43 @@ const TimelinePage = () => {
   }
 
   return (
-      <Stack justify="center" align="center">
-        <Timeline active={getActiveItems() - 1} bulletSize={24} lineWidth={2}>
-          {items.map((item, ind) => (
-            <Timeline.Item
-              key={ind}
-              bullet={
-                item.icon === "Event" ? (
-                  <IconCalendarEvent size={12} />
-                ) : (
-                  <IconCheck size={12} />
-                )
-              }
-              title={item.title}
-            >
-              {item.associatedBlogArticle !== null && (
-                <Text
-                  color="dimmed"
-                  size="sm"
-                  variant="link"
-                  component="span"
-                  inherit
+    <Stack justify="center" align="center">
+      <Timeline active={getActiveItems() - 1} bulletSize={24} lineWidth={2}>
+        {items.map((item, ind) => (
+          <Timeline.Item
+            key={ind}
+            bullet={
+              item.icon === "Event" ? (
+                <IconCalendarEvent size={12} />
+              ) : (
+                <IconCheck size={12} />
+              )
+            }
+            title={item.title}
+          >
+            {item.associatedBlogArticle !== null && (
+              <Text
+                color="dimmed"
+                size="sm"
+                variant="link"
+                component="span"
+                inherit
+              >
+                <Link
+                  to={`/blog/${item.associatedBlogArticle.slug}`}
+                  className={"solidLink"}
                 >
-                  <Link
-                    to={`/blog/${item.associatedBlogArticle.slug}`}
-                    className={"solidLink"}
-                  >
-                    <Text>{item.associatedBlogArticle.title}</Text>
-                  </Link>
-                </Text>
-              )}
-              <Text size="xs" mt={4}>
-                {getDateFromItems(ind).toDateString()}
+                  <Text>{item.associatedBlogArticle.title}</Text>
+                </Link>
               </Text>
-            </Timeline.Item>
-          ))}
-        </Timeline>
-      </Stack>
+            )}
+            <Text size="xs" mt={4}>
+              {getDateFromItems(ind).toDateString()}
+            </Text>
+          </Timeline.Item>
+        ))}
+      </Timeline>
+    </Stack>
   )
 }
 

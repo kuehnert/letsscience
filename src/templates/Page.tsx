@@ -21,9 +21,7 @@ const InnerPage: React.FC<Props> = ({ data }) => {
 
       {post.slug !== "/" && <Title>{post.title}</Title>}
 
-      {post.slug === "/" && 
-        <BlogShowCase />
-      }
+      {post.slug === "/" && <BlogShowCase />}
 
       <TypographyStylesProvider>
         {renderRichText(post.content)}
