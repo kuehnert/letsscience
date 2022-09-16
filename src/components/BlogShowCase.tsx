@@ -36,7 +36,7 @@ const BlogShowcase: React.FC = () => {
               }
               title={(post.node.title as string).padEnd(maxTitleLength, " ")}
               category={post.node.tags}
-              slug={post.node.slug}
+              slug={`/blog/${post.node.slug}`}
               colorMap={colorMap(posts)}
             />
           </Grid.Col>
