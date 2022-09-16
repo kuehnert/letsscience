@@ -132,7 +132,7 @@ const Navbar = ({ links }: HeaderSearchProps) => {
   })
 
   return (
-    <Header height={56} mb={60}>
+    <Header height={56} mb={30}>
       <Container>
         <div className={classes.inner}>
           <Stack justify="left" style={{ cursor: "pointer" }}>
