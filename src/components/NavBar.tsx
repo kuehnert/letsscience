@@ -139,8 +139,8 @@ const Navbar = ({ links }: HeaderSearchProps) => {
   return (
     <Header height={56} mb={30}>
       <Container>
-        <div className={classes.inner} onClick={() => navigate("/")}>
-          <Group position="left" spacing={5} style={{ cursor: "pointer" }}>
+        <div className={classes.inner}>
+          <Group position="left" spacing={5} onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
             <ErasmusLogo />
             <Text size="sm" className={classes.slogan} weight={300}>
               Let's Science our Environment
