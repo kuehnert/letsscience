@@ -6,6 +6,7 @@ import HeroBanner from "../components/HeroBanner"
 import BlogShowCase from "../components/BlogShowCase"
 import Layout from "../layout/Layout"
 import renderRichText from "../utils/renderRichText"
+import Keypoints from "../components/Keypoints"
 
 interface Props {
   data: any
@@ -15,14 +16,22 @@ const InnerPage: React.FC<Props> = ({ data }) => {
   const post = data.allContentfulWebPage.edges[0].node
   useDocumentTitle(post.title)
 
+  if (post.slug === "/") {
+    return (
+      <>
+        <HeroBanner />
+        <BlogShowCase />
+        <Title pt={"lg"} order={2}>
+          Keypoints
+        </Title>
+        <Keypoints />
+      </>
+    )
+  }
+
   return (
     <>
-      {post.slug === "/" && <HeroBanner />}
-
-      {post.slug !== "/" && <Title>{post.title}</Title>}
-
-      {post.slug === "/" && <BlogShowCase />}
-
+      <Title>{post.title}</Title>
       <TypographyStylesProvider>
         {renderRichText(post.content)}
       </TypographyStylesProvider>
