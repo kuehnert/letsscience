@@ -69,7 +69,7 @@ const TimelinePage = () => {
   }
 
   return (
-    <Stack justify="center" align="center" style={{height: "100%"}}>
+    <Stack justify="center" align="center" style={{ height: "100%" }}>
       <Timeline active={getActiveItems() - 1} bulletSize={24} lineWidth={2}>
         {items.map((item, ind) => (
           <Timeline.Item
