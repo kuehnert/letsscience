@@ -52,6 +52,7 @@ const TimelinePage = () => {
   const items: Array<any> = data.allContentfulTimelineItem.edges
     .map(k => k.node)
     .sort((a, b) => getDate(a) - getDate(b))
+    .slice(-4)
 
   const getDateFromItems = (i: number): Date => {
     return getDate(items[i])
@@ -68,7 +69,7 @@ const TimelinePage = () => {
   }
 
   return (
-    <Stack justify="center" align="center">
+    <Stack justify="center" align="center" style={{height: "100%"}}>
       <Timeline active={getActiveItems() - 1} bulletSize={24} lineWidth={2}>
         {items.map((item, ind) => (
           <Timeline.Item
