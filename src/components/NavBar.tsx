@@ -8,11 +8,12 @@ import {
   Container,
   Stack,
   Transition,
+  Text,
   Paper,
 } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { IconChevronDown } from "@tabler/icons"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import React from "react"
 import ErasmusLogo from "./ErasmusLogo"
 
@@ -22,6 +23,10 @@ const useStyles = createStyles(theme => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+
+  slogan: {
+    marginTop: "4px",
   },
 
   links: {
@@ -132,12 +137,15 @@ const Navbar = ({ links }: HeaderSearchProps) => {
   })
 
   return (
-    <Header height={56} mb={60}>
+    <Header height={56} mb={30}>
       <Container>
         <div className={classes.inner}>
-          <Stack justify="left" style={{ cursor: "pointer" }}>
+          <Group position="left" spacing={5} onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
             <ErasmusLogo />
-          </Stack>
+            <Text size="sm" className={classes.slogan} weight={300}>
+              Let's Science our Environment
+            </Text>
+          </Group>
           <Group spacing={5} className={classes.links}>
             {items}
           </Group>

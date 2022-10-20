@@ -25,7 +25,7 @@ const BlogShowcase: React.FC = () => {
   return (
     <>
       <Title order={2}>Latest Blog Articles </Title>
-      <Grid>
+      <Grid mt={"xs"}>
         {posts.map((post, index) => (
           <Grid.Col xs={12} sm={4} key={index}>
             <EntryCard

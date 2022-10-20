@@ -6,14 +6,13 @@ import {
   List,
   ThemeIcon,
 } from "@mantine/core"
-import { IconCheck } from "@tabler/icons"
 import React from "react"
 
 const useStyles = createStyles(theme => ({
   inner: {
     display: "flex",
     justifyContent: "space-between",
-    paddingBottom: theme.spacing.xl * 2,
+    paddingBottom: theme.spacing.xs,
   },
 
   content: {
@@ -82,37 +81,6 @@ const HeroBanner: React.FC = () => {
           that now is the time to act! With our three guidelines, we want to
           inspire ourselves and others to learn, come together and take action.
         </Text>
-
-        <List
-          mt={30}
-          spacing="sm"
-          size="sm"
-          icon={
-            <ThemeIcon size={20} radius="xl">
-              <IconCheck size={12} stroke={1.5} />
-            </ThemeIcon>
-          }
-        >
-          <List.Item
-            icon={
-              <ThemeIcon size={20} radius="xl">
-                <IconCheck size={12} stroke={1.5} />
-              </ThemeIcon>
-            }
-          >
-            <b>Understanding</b> – Learning about our environment and the
-            changes it is going through and getting a broader understanding of
-            it
-          </List.Item>
-          <List.Item>
-            <b>Cooperating</b> – Working as a community, who is stronger than
-            the individual and finding solutions together through communication
-            and exchanging ideas
-          </List.Item>
-          <List.Item>
-            <b>Engaging</b> – Starting to actively engage and change things
-          </List.Item>
-        </List>
       </div>
       <Image src={"./logo.webp"} className={classes.image} />
     </div>
